@@ -20,6 +20,32 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
+      - name: Exercise updater on Windows PowerShell 5.1
+        shell: powershell
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $testRoot = Join-Path $env:RUNNER_TEMP ('updater-test-' + [guid]::NewGuid().ToString('N'))
+          New-Item -ItemType Directory -Path $testRoot | Out-Null
+          $env:LOCALAPPDATA = $testRoot
+          $target = Join-Path $testRoot 'guide test.exe'
+          Copy-Item "$env:WINDIR/System32/whoami.exe" $target
+          $env:SEONDAENG_UPDATE_TARGET = $target
+          $env:SEONDAENG_UPDATE_VERSION = '1.3.1'
+          $env:SEONDAENG_UPDATE_EDITION = 'public'
+          $env:SEONDAENG_UPDATE_OWNER = 'seondoong'
+          $env:SEONDAENG_UPDATE_REPO = 'Digimon'
+          $env:SEONDAENG_UPDATE_PID = '2147483647'
+          $env:SEONDAENG_UPDATE_MANUAL = '0'
+          function Start-Process { param($FilePath, $WorkingDirectory, $ErrorAction) $global:restartedPath = $FilePath }
+          $code = [IO.File]::ReadAllText((Join-Path $pwd 'native/auto_update.ps1'))
+          # Replace only message boxes, so failures are reported in CI without blocking it.
+          $code = [regex]::Replace($code, '\[System.Windows.Forms.MessageBox\]::Show\([^\n]+\) \| Out-Null', 'Write-Host $text')
+          & ([scriptblock]::Create($code))
+          $log = Join-Path $testRoot 'SeondaengDigimonGuide/update.log'
+          if (Test-Path $log) { Get-Content $log -Encoding UTF8 | Write-Host }
+          if (-not $global:restartedPath) { throw 'Updater did not reach restart after replacing the EXE' }
+          if (-not (Test-Path ($target + '.previous'))) { throw 'Previous EXE backup is missing' }
+          Write-Host 'Updater download, verification, replacement, and restart request passed'
       - name: Prepare compiler command
         shell: pwsh
         run: |
