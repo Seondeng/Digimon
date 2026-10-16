@@ -63,8 +63,31 @@ jobs:
           $ErrorActionPreference = 'Stop'
           $exe = "release/Seondaeng_Digimon.exe"
           $head = git rev-parse HEAD
-          gh release create "v$env:RELEASE_VERSION" $exe --target $head --title "디지몬 RPG $env:RELEASE_VERSION · 배포용" --notes '자동 업데이트용 배포 파일'
+          gh release create "v$env:RELEASE_VERSION" $exe --target $head --title "디지몬 RPG 던전 정보 $env:RELEASE_VERSION 배포용" --notes '자동 업데이트용 배포 파일'
           if ($LASTEXITCODE -ne 0) { throw 'Release upload failed' }
+          $releases = gh release list --limit 100 --json tagName,isPrerelease | ConvertFrom-Json
+          if ($LASTEXITCODE -ne 0) { throw 'Could not list release titles' }
+          foreach ($release in $releases) {
+            if (-not $release.isPrerelease -and $release.tagName -match '^v(\d+\.\d+\.\d+)
+          if ($LASTEXITCODE -ne 0) {
+            gh release create bootstrap-assets --target $head --title '지도 이미지 원본' --notes '자동 빌드용 이미지 자료' --prerelease
+            if ($LASTEXITCODE -ne 0) { throw 'Asset release creation failed' }
+          }
+          gh release upload bootstrap-assets release/assets.zip --clobber
+          if ($LASTEXITCODE -ne 0) { throw 'Asset backup failed' }
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add updates/public.json
+          git commit -m "Publish update manifest $env:RELEASE_VERSION"
+          if ($LASTEXITCODE -ne 0) { throw 'Manifest commit failed' }
+          git push origin HEAD:main
+          if ($LASTEXITCODE -ne 0) { throw 'Manifest push failed; existing users remain on the previous version' }
+) {
+              $versionLabel = $Matches[1]
+              gh release edit $release.tagName --title "디지몬 RPG 던전 정보 $versionLabel 배포용"
+              if ($LASTEXITCODE -ne 0) { throw 'Release title update failed' }
+            }
+          }
           gh release view bootstrap-assets *> $null
           if ($LASTEXITCODE -ne 0) {
             gh release create bootstrap-assets --target $head --title '지도 이미지 원본' --notes '자동 빌드용 이미지 자료' --prerelease
