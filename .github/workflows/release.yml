@@ -32,8 +32,8 @@ jobs:
           $env:SEONDAENG_UPDATE_TARGET = $target
           $env:SEONDAENG_UPDATE_VERSION = '1.3.1'
           $env:SEONDAENG_UPDATE_EDITION = 'public'
-          $env:SEONDAENG_UPDATE_OWNER = 'seondoong'
-          $env:SEONDAENG_UPDATE_REPO = 'Digimon'
+          $env:SEONDAENG_UPDATE_OWNER = ($env:GITHUB_REPOSITORY -split '/')[0]
+          $env:SEONDAENG_UPDATE_REPO = ($env:GITHUB_REPOSITORY -split '/')[1]
           $env:SEONDAENG_UPDATE_PID = '2147483647'
           $env:SEONDAENG_UPDATE_MANUAL = '0'
           function Start-Process { param($FilePath, $WorkingDirectory, $ErrorAction) $global:restartedPath = $FilePath }
@@ -61,7 +61,7 @@ jobs:
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'
-          $exe = "release/DigimonRPG_Public_v$env:RELEASE_VERSION.exe"
+          $exe = "release/Seondaeng_Digimon.exe"
           $head = git rev-parse HEAD
           gh release create "v$env:RELEASE_VERSION" $exe --target $head --title "디지몬 RPG $env:RELEASE_VERSION · 배포용" --notes '자동 업데이트용 배포 파일'
           if ($LASTEXITCODE -ne 0) { throw 'Release upload failed' }

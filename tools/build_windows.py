@@ -4,6 +4,8 @@ from urllib.request import urlopen,Request
 from urllib.parse import quote
 import hashlib,json,os,subprocess,re,shutil,sys
 root=Path(__file__).resolve().parents[1];os.chdir(root)
+repository=os.environ.get('GITHUB_REPOSITORY','Seondeng/Digimon');assert re.fullmatch(r'[A-Za-z0-9-]+/[A-Za-z0-9_.-]+',repository)
+owner,repo_name=repository.split('/')
 version=os.environ['RELEASE_VERSION'];assert re.fullmatch(r'1\.3\.\d+',version)
 app=root/'app';native=root/'native';assets=app/'assets';assets.mkdir(exist_ok=True)
 cache=root/'.cache';cache.mkdir(exist_ok=True)
@@ -29,7 +31,7 @@ with urlopen('https://api.nuget.org/v3-flatcontainer/microsoft.web.webview2/1.0.
 with ZipFile(pkg) as z:
  for name in ['build/native/include/WebView2.h']:(native/Path(name).name).write_bytes(z.read(name))
  (app/'WebView2Loader.dll').write_bytes(z.read('build/native/x64/WebView2Loader.dll'))
-(native/'update_config.h').write_text(f'#define APP_VERSION L"{version}"\n#define UPDATE_OWNER L"seondoong"\n#define UPDATE_REPOSITORY L"Digimon"\n')
+(native/'update_config.h').write_text(f'#define APP_VERSION L"{version}"\n#define UPDATE_OWNER L"{owner}"\n#define UPDATE_REPOSITORY L"{repo_name}"\n')
 s=(app/'index.html').read_text(encoding='utf-8');s=s.replace('v1.3',f'v{version}');(app/'index.html').write_text(s,encoding='utf-8')
 data=json.loads((app/'distribution.json').read_text(encoding='utf-8'));assert data['edition']=='public';data['version']=version;(app/'distribution.json').write_text(json.dumps(data,ensure_ascii=False),encoding='utf-8')
 for js in app.glob('*.js'):subprocess.run(['node','--check',str(js)],check=True)
@@ -38,11 +40,11 @@ with ZipFile(native/'payload.zip','w',ZIP_DEFLATED,compresslevel=6) as z:
   if f.is_file():z.write(f,f.relative_to(app))
 digest=hashlib.sha256((native/'payload.zip').read_bytes()).hexdigest()[:12]
 (native/'release_id.h').write_text(f'#define RELEASE_ID L"{version}-{digest}"\n')
-release=root/'release';release.mkdir(exist_ok=True);exe=release/f'DigimonRPG_Public_v{version}.exe'
+release=root/'release';release.mkdir(exist_ok=True);exe=release/'Seondaeng_Digimon.exe'
 # Called from a VS developer command prompt, installed on windows-latest.
 subprocess.run(['rc','/nologo','/fo','app.res','app.rc'],cwd=native,check=True)
 subprocess.run(['cl','/nologo','/O2','/utf-8','/std:c11','/D_CRT_SECURE_NO_WARNINGS','launcher.c','app.res','/Fe:'+str(exe),'/link','/SUBSYSTEM:WINDOWS','/ENTRY:wWinMainCRTStartup','winhttp.lib','ole32.lib','shell32.lib','shlwapi.lib','uuid.lib','gdi32.lib','user32.lib'],cwd=native,check=True)
-subprocess.run([sys.executable,'tools/prepare_release.py','--exe',str(exe),'--version',version,'--repository','seondoong/Digimon','--output','updates/public.json'],check=True)
+subprocess.run([sys.executable,'tools/prepare_release.py','--exe',str(exe),'--version',version,'--repository',repository,'--output','updates/public.json'],check=True)
 with ZipFile(release/'assets.zip','w',ZIP_DEFLATED,compresslevel=6) as z:
  for f in sorted(assets.iterdir()):
   if f.is_file():z.write(f,f.name)
