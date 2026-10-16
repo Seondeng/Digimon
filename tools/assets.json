@@ -1,0 +1,221 @@
+{
+  "origin": "https://seondaeng-digimon-guide.seonjae0912.chatgpt.site/assets/",
+  "files": [
+    {
+      "path": "dark-dungeon-user.png",
+      "sha256": "f454290ec06b0bd6a4dca341ca0298db7e5cd96d91858087c312b5e37ca108f1"
+    },
+    {
+      "path": "dragon-user.png",
+      "sha256": "a48fa5958d6ee8783b55c5d4bfaf11b8ea4dd1067a706133c5aca27fcc8853d3"
+    },
+    {
+      "path": "hellsfield-user.png",
+      "sha256": "a2b6bb28fcf9c9cc4e28083794b1fe57ee60f8f8eeef3c0a09a864c5d6656ec6"
+    },
+    {
+      "path": "hero-culumon.webp",
+      "sha256": "dbef538d09a3d7bb570aae3388fd38bcde2e5bdceada1a8343a1e6bcb541d221"
+    },
+    {
+      "path": "hero.webp",
+      "sha256": "2152bbd56e3ed0c85a524c76af8eeaee71d55e5495073af9c210d45014d3b354"
+    },
+    {
+      "path": "infinite-mountain-user.png",
+      "sha256": "f95d4689ce9592d176dea8b5142b12c0c81b378779b5f082a575d8a5ddeab50a"
+    },
+    {
+      "path": "key-0-0.png",
+      "sha256": "f77a3768489b7da3486d6f9d102b9c80097ee6de6b23e56a346230af2f8756bf"
+    },
+    {
+      "path": "key-0-1.png",
+      "sha256": "a950b766bf79d434653b8209a794d876699a09bdae8a5c8f5f40f1401f12edc5"
+    },
+    {
+      "path": "key-1-0.png",
+      "sha256": "f4dfd32536e6a9fd01357f8166b47086d1791c78bd4fa6486d228dd746801b04"
+    },
+    {
+      "path": "key-1-1.png",
+      "sha256": "50611461291a0d2ad4c5d7edd6f1a17a8ee737109328159e5c2ef73cf655bba9"
+    },
+    {
+      "path": "key-10-0.png",
+      "sha256": "444b6f94e828cbd5d5dc111a912043eb606ae599a8d48fd4c19933c16d88c3ac"
+    },
+    {
+      "path": "key-10-1.png",
+      "sha256": "3f276e8363b406f00501092e98f0a236e55bdd7d0a6c67c88a5d3ad74647b7b5"
+    },
+    {
+      "path": "key-11-0.png",
+      "sha256": "316940b4b11abd3552a65e87bc5b3c9f73c14ed2b2f2a37ce3d9e9f8068dbbc4"
+    },
+    {
+      "path": "key-11-1.png",
+      "sha256": "92fffdd30b30b2316c9c056361f9002d5ddf9b0e64eacf24c4262d59a8627096"
+    },
+    {
+      "path": "key-2-0.png",
+      "sha256": "cbd4e56e22b4b74997b4614d4dbd37def190e4d7fb3314a6494ed8a9d9fd9539"
+    },
+    {
+      "path": "key-2-1.png",
+      "sha256": "a9e0af042ed7c6cd328cdfe6b16e79027167db48f2ede21cb8aa5efc04da7020"
+    },
+    {
+      "path": "key-3-0.png",
+      "sha256": "01d3c53f8be5e72187ef99ecec5718b28322e0a4c071468604f79f3a525ddbaf"
+    },
+    {
+      "path": "key-3-1.png",
+      "sha256": "abeec822587e890b0eb21494b706bbc9d66fa7496ba94090ffaa0f8c316b317e"
+    },
+    {
+      "path": "key-4-0.png",
+      "sha256": "d6c84b94ae748e0bcf05c29f417897fa5bb387ed58ad7daebc2103794b6f8a39"
+    },
+    {
+      "path": "key-4-1.png",
+      "sha256": "14fe04ff293189ce4842f29888a0e5c2c899b9e8b1263f38cce29ad2d52ebc54"
+    },
+    {
+      "path": "key-5-0.png",
+      "sha256": "35e0c1da44928202e464d15917685d47fc235f9421519cc6f76b16b941894e8a"
+    },
+    {
+      "path": "key-5-1.png",
+      "sha256": "7a60c27e6b97a7cbddd8c576abb6398e6563ea05c28b542bcd73e4e42998e3ba"
+    },
+    {
+      "path": "key-6-0.png",
+      "sha256": "8b8f388928fb45a460738f97ba50c025900bfd95757d0cca18664e36db59e18e"
+    },
+    {
+      "path": "key-6-1.png",
+      "sha256": "d5af23055ac9ed726747693f9ccbc36f5a47f854dc34809211f1f3bfc1309bfb"
+    },
+    {
+      "path": "key-7-0.png",
+      "sha256": "fefa0960f82fe07bfc862709ea0cecb7f39dfaef6debb91683e044e4d4ca2f81"
+    },
+    {
+      "path": "key-7-1.png",
+      "sha256": "c81cc1af0fd4b180ec518085e7c99dd73a499df223907f73ccb4c3e9c89ca736"
+    },
+    {
+      "path": "key-8-0.png",
+      "sha256": "f558f60aed82d74d2b90c31021291c73bbcb72daa673587938c4fb2bcc9ace36"
+    },
+    {
+      "path": "key-8-1.png",
+      "sha256": "7d04456dc3d302a6096a62340d2cce776373a959ded1a406285a87a589289b33"
+    },
+    {
+      "path": "key-9-0.png",
+      "sha256": "d96fd6b9be4f6da4d7f24b82f5f77858e345c81b9c7d65d8543082f275f9c8a9"
+    },
+    {
+      "path": "key-9-1.png",
+      "sha256": "db7d98d87816fa6fb9f815fd41c7b3be11790801bc40a8daf4a8882121661c17"
+    },
+    {
+      "path": "maze-card-user.png",
+      "sha256": "847097aee90be5c564251d82cb355e532f3b9ba18c575890b14e5bf42a5fa9d2"
+    },
+    {
+      "path": "maze-floor-1-user.png",
+      "sha256": "ab6809718071b4d2e19465351b1bc6a5ed7e2a0f02c13d383b7ddba4fd126449"
+    },
+    {
+      "path": "maze-floor-2-user.png",
+      "sha256": "3692bc9e47b9cdd34ca2b1c65cf0645c6aa3b10617d8e2ebdb53a624ea8a9621"
+    },
+    {
+      "path": "maze-treasure-chest.png",
+      "sha256": "55db042bf87f800fe8f5aafbba5f7f7a1be0e21dba5030d783f8b15dc0713807"
+    },
+    {
+      "path": "phoenix-user.png",
+      "sha256": "524c0aa1ced146d6572ecd0a44803b22dd7d17ba9802bd8ea09ab31212ef36ba"
+    },
+    {
+      "path": "quiz-user.jpg",
+      "sha256": "f12a39d9a5cef5177da7c3445a5b3927e77bc0b5d96b95cf213e4213eb7c9939"
+    },
+    {
+      "path": "royal-base-user.png",
+      "sha256": "7cdbc691c2eda7d2d45138c94e56fcd0db501c3f2e719f213b673312a1983e08"
+    },
+    {
+      "path": "royal-card-user.png",
+      "sha256": "4209a1e1c3cbc4ef76316fc68b05a714bc5c07a6dc6b677abd3d1f3a5f76a234"
+    },
+    {
+      "path": "royal-floor-1.png",
+      "sha256": "373f8841fafb4314c6cdaf061521458003348bd3e956877515033bdd7d94113f"
+    },
+    {
+      "path": "royal-floor-2.png",
+      "sha256": "393f4eacfb5629db5b6629a285d21f8f68b1328f58deefd74806fbf3ac2bc887"
+    },
+    {
+      "path": "spike-mountain-user.png",
+      "sha256": "4c8804185aec79e287a11b65e0e40dec5d49f417c55b6699ecfaa0e40d886705"
+    },
+    {
+      "path": "tiger-user.png",
+      "sha256": "77a9863e150256e11c5a5cebaa0b1024d4a29645a2fa08bed98e4fcae3981471"
+    },
+    {
+      "path": "tiles.webp",
+      "sha256": "510e77170ee192459d58a945a3a9c4a2f1ce2b84c848630868981a10fd77d8df"
+    },
+    {
+      "path": "turtle-user.png",
+      "sha256": "753259fe0be22c34148a969e7264ab6f9dc3518dfa40127cd1dbb20f821308e9"
+    },
+    {
+      "path": "underground-card-user.png",
+      "sha256": "a375d607ce85c7df6d53a9a70cae013360e145e5bb239704bfdf63b4b9b37e37"
+    },
+    {
+      "path": "unforest-card-user.png",
+      "sha256": "4e8a3a8ca8a11e4c99197327ecb4e5718b8ade27df32aac557f5eddc8d74cce6"
+    },
+    {
+      "path": "waterspace-cave-1f-route-1.jpg",
+      "sha256": "71f6b61953229a6fe642f482a6fe82a8c212ad1ee4c1a8fb119b35cce4ff4bd6"
+    },
+    {
+      "path": "waterspace-cave-1f.webp",
+      "sha256": "3a2aa6dda5b136d367754e64802fa533312c6283907179829dc057a30f28f5c0"
+    },
+    {
+      "path": "waterspace-cave-b1.webp",
+      "sha256": "0b2d4ea6a8fb6252fa035c1f3ef9118b52cadf55f9201dcfb2b3c5cd26cb323c"
+    },
+    {
+      "path": "waterspace-passage-leviamon-choice.png",
+      "sha256": "adf071018eea08defd0eb63eb69a24cb44534cd0b7bf3b8b3e3eb35e41a6c4fe"
+    },
+    {
+      "path": "waterspace-passage-leviamon-start.png",
+      "sha256": "874aad8482c711d56dd60d072123573e84169d54a3ca4fe5ad9eb45cc51f918b"
+    },
+    {
+      "path": "waterspace-sea-a.webp",
+      "sha256": "c0a82cdbe72d3c141d7385bf98494f961638177a62298e101b78078228beef01"
+    },
+    {
+      "path": "waterspace-sea-b-map.png",
+      "sha256": "6bdf8264c3a26781065dc77772c31207e6fd2afe42605364a1d9348f29a8ad40"
+    },
+    {
+      "path": "waterspace-user.png",
+      "sha256": "6f67cd8345077bf22a578f19ad5337e8c4a57317ab8cfedba34f063dbc70c442"
+    }
+  ]
+}

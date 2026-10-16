@@ -1,0 +1,55 @@
+name: Build and publish Digimon RPG
+on:
+  push:
+    branches: [main]
+    paths: ['app/**', 'native/**', 'tools/**', '.github/workflows/release.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: digimon-public-release
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      RELEASE_VERSION: 1.3.${{ github.run_number }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Prepare compiler command
+        shell: pwsh
+        run: |
+          $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
+          $install = & $vswhere -latest -products '*' -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath
+          if (-not $install) { throw 'Visual C++ build tools not found' }
+          $vcvars = Join-Path $install 'VC\Auxiliary\Build\vcvars64.bat'
+          @("@echo off", "call `"$vcvars`"", "if errorlevel 1 exit /b 1", "python tools\build_windows.py", "exit /b %errorlevel%") | Set-Content -LiteralPath build-release.cmd -Encoding ASCII
+      - name: Build verified public EXE
+        shell: cmd
+        run: build-release.cmd
+      - name: Publish release before updating manifest
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $exe = "release/DigimonRPG_Public_v$env:RELEASE_VERSION.exe"
+          $head = git rev-parse HEAD
+          gh release create "v$env:RELEASE_VERSION" $exe --target $head --title "디지몬 RPG $env:RELEASE_VERSION · 배포용" --notes '자동 업데이트용 배포 파일'
+          if ($LASTEXITCODE -ne 0) { throw 'Release upload failed' }
+          gh release view bootstrap-assets *> $null
+          if ($LASTEXITCODE -ne 0) {
+            gh release create bootstrap-assets --target $head --title '지도 이미지 원본' --notes '자동 빌드용 이미지 자료' --prerelease
+            if ($LASTEXITCODE -ne 0) { throw 'Asset release creation failed' }
+          }
+          gh release upload bootstrap-assets release/assets.zip --clobber
+          if ($LASTEXITCODE -ne 0) { throw 'Asset backup failed' }
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add updates/public.json
+          git commit -m "Publish update manifest $env:RELEASE_VERSION"
+          if ($LASTEXITCODE -ne 0) { throw 'Manifest commit failed' }
+          git push origin HEAD:main
+          if ($LASTEXITCODE -ne 0) { throw 'Manifest push failed; existing users remain on the previous version' }

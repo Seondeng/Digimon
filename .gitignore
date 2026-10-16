@@ -1,0 +1,10 @@
+.cache/
+release/
+build-release.cmd
+native/payload.zip
+native/*.res
+native/*.obj
+native/release_id.h
+native/WebView2.h
+app/WebView2Loader.dll
+updates/full.json
