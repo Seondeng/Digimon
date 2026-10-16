@@ -8,7 +8,7 @@ $owner = $env:SEONDAENG_UPDATE_OWNER
 $repository = $env:SEONDAENG_UPDATE_REPO
 $appProcessId = [int]$env:SEONDAENG_UPDATE_PID
 $manual = $env:SEONDAENG_UPDATE_MANUAL -eq '1'
-$form = $null; $mutex = $null; $locked = $false; $staged = $null; $backup = $null; $closedApp = $false; $cancelled = $false
+$form = $null; $mutex = $null; $locked = $false; $staged = $null; $backup = $null; $closedApp = $false; $uiState = @{ cancelled = $false; label = $null }
 $logDirectory = Join-Path $env:LOCALAPPDATA 'SeondaengDigimonGuide'
 function Note([string]$text) {
     try { [IO.Directory]::CreateDirectory($logDirectory) | Out-Null
@@ -37,6 +37,7 @@ function Fetch([string]$url, [string]$destination, [long]$limit) {
             $request.Timeout = 10000; $request.ReadWriteTimeout = 20000
             $request.UserAgent = 'SeondaengDigimonGuide/1.3'
             $request.Headers['Cache-Control'] = 'no-cache'
+            $request.CachePolicy = [Net.Cache.RequestCachePolicy]::new([Net.Cache.RequestCacheLevel]::NoCacheNoStore)
             $response = $request.GetResponse()
             if ([int]$response.StatusCode -in @(301,302,303,307,308)) {
                 $next = [uri]::new($uri, $response.Headers['Location'])
@@ -57,9 +58,9 @@ function Fetch([string]$url, [string]$destination, [long]$limit) {
             if ($total -gt $limit -or $watch.Elapsed.TotalMinutes -gt 10) { throw 'Update download limit exceeded.' }
             $output.Write($buffer, 0, $read)
             if ($null -ne $form) {
-                $script:statusLabel.Text = '새 버전 다운로드 중… ' + [Math]::Round($total / 1048576, 1) + ' MB'
+                $uiState.label.Text = '새 버전 다운로드 중… ' + [Math]::Round($total / 1048576, 1) + ' MB'
                 [System.Windows.Forms.Application]::DoEvents()
-                if ($script:cancelled) { throw 'Update cancelled.' }
+                if ($uiState.cancelled) { throw 'Update cancelled.' }
             }
         }
         if ($response.ContentLength -ge 0 -and $total -ne $response.ContentLength) { throw 'Incomplete update download.' }
@@ -77,10 +78,10 @@ try {
     $locked = $mutex.WaitOne(0)
     if (-not $locked) { return }
     # Only this fixed repository can declare the next release.
-    $manifestUrl = 'https://raw.githubusercontent.com/' + $owner + '/' + $repository + '/main/updates/' + $edition + '.json'
+    $manifestUrl = 'https://raw.githubusercontent.com/' + $owner + '/' + $repository + '/main/updates/' + $edition + '.json?check=' + [DateTimeOffset]::UtcNow.ToUnixTimeSeconds()
     $manifest = (Fetch $manifestUrl '' 65536) | ConvertFrom-Json
     if ($manifest.schema -ne 1 -or $manifest.edition -cne $edition -or $manifest.version -notmatch '^\d{1,4}\.\d{1,4}\.\d{1,4}$') { throw 'Invalid release manifest.' }
-    if ([version]$manifest.version -le $current) { if ($manual) { Notify '현재 최신 버전입니다.' }; return }
+    if ([version]$manifest.version -le $current) { if ($manual) { Notify ('현재 최신 버전입니다.' + [Environment]::NewLine + '실행 중: ' + $current + [Environment]::NewLine + '배포 버전: ' + $manifest.version) }; return }
     if ($manifest.sha256 -notmatch '^[a-fA-F0-9]{64}$' -or $manifest.size -lt 65536 -or $manifest.size -gt 536870912) { throw 'Invalid release integrity metadata.' }
     $asset = SafeUri ([string]$manifest.url)
     $releasePrefix = '/' + $owner + '/' + $repository + '/releases/download/'
@@ -94,15 +95,16 @@ try {
     $statusLabel = New-Object System.Windows.Forms.Label
     $statusLabel.AutoSize = $true; $statusLabel.Left = 20; $statusLabel.Top = 24
     $statusLabel.Text = '버전 ' + $manifest.version + ' 업데이트를 준비합니다…'
+    $uiState.label = $statusLabel
     $form.Controls.Add($statusLabel)
-    $form.add_FormClosing({ $script:cancelled = $true })
+    $form.add_FormClosing({ $uiState.cancelled = $true }.GetNewClosure())
     $form.Show(); [System.Windows.Forms.Application]::DoEvents()
     Fetch $asset.AbsoluteUri $staged ([long]$manifest.size)
     if ((Get-Item -LiteralPath $staged).Length -ne [long]$manifest.size) { throw 'Update file size mismatch.' }
     if ((Get-FileHash -LiteralPath $staged -Algorithm SHA256).Hash -ine $manifest.sha256) { throw 'Update SHA256 mismatch.' }
     $pe = [IO.File]::OpenRead($staged)
     try { if ($pe.ReadByte() -ne 77 -or $pe.ReadByte() -ne 90) { throw 'Not a Windows executable.' } } finally { $pe.Dispose() }
-    if ($cancelled) { throw 'Update cancelled.' }
+    if ($uiState.cancelled) { throw 'Update cancelled.' }
     $app = Get-Process -Id $appProcessId -ErrorAction SilentlyContinue
     if ($app -and [IO.Path]::GetFullPath($app.Path) -ine $target) { throw 'Application process changed.' }
     $statusLabel.Text = '파일 확인 완료. 프로그램을 다시 시작합니다…'
@@ -121,7 +123,7 @@ try {
     $closedApp = $false
     Note ('Updated to ' + $manifest.version)
 } catch {
-    Note $_.Exception.Message
+    Note ('Current ' + $current + ': ' + $_.Exception.Message)
     if ($closedApp) { try { Start-Process -FilePath $target } catch {} }
     if ($manual -or $null -ne $form) { Notify '업데이트하지 못했습니다. 기존 버전을 계속 사용할 수 있습니다.' }
 } finally {
