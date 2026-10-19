@@ -6,7 +6,7 @@ import hashlib,json,os,subprocess,re,shutil,sys
 root=Path(__file__).resolve().parents[1];os.chdir(root)
 repository=os.environ.get('GITHUB_REPOSITORY','Seondeng/Digimon');assert re.fullmatch(r'[A-Za-z0-9-]+/[A-Za-z0-9_.-]+',repository)
 owner,repo_name=repository.split('/')
-version=os.environ['RELEASE_VERSION'];assert re.fullmatch(r'1\.3\.\d+',version)
+version=os.environ['RELEASE_VERSION'];assert re.fullmatch(r'\d{1,4}\.\d{1,4}\.\d{1,4}',version)
 app=root/'app';native=root/'native';assets=app/'assets';assets.mkdir(exist_ok=True)
 cache=root/'.cache';cache.mkdir(exist_ok=True)
 # Seed original images from a GitHub release after the first successful build.
