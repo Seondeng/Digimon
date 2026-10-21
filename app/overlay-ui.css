@@ -40,3 +40,6 @@
 .companion-compact .royal-material-tree button.selected{border-color:var(--gold);color:var(--gold);background:#eac18522}
 .companion-compact .royal-material-detail .keycard{padding:8px}
 .companion-compact .royal-material-detail .keypair{gap:12px}
+
+/* Small-window navigation must not hide unselected material buttons. */
+.companion-compact .royal-material-tree button,.companion-compact .royal-material-tree button:not(.active){display:block!important;visibility:visible}
