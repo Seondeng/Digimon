@@ -14,3 +14,18 @@
 .companion-compact .companion-toolbar{display:block;margin:0;width:100%;box-sizing:border-box}.companion-compact .companion-titlebar{display:flex;width:100%;box-sizing:border-box;min-height:30px;height:30px;padding:0;gap:0;background:#152033;border-bottom:1px solid #304057}.companion-titlebar .companion-drag-handle{align-self:stretch;padding:0;min-height:30px}.companion-titlebar .companion-window-buttons{margin-left:auto;gap:0;align-self:stretch}.companion-titlebar .companion-window-buttons button{width:34px;height:30px;border:0;border-left:1px solid #304057;border-radius:0;background:transparent}.companion-titlebar .companion-window-buttons #companionClose{border:0;border-left:1px solid #304057;background:transparent;color:#e5edf8}.companion-titlebar .companion-window-buttons button:hover{background:#304057}.companion-titlebar .companion-window-buttons #companionClose:hover{background:#a8394f}.companion-compact .companion-opacity{display:flex;flex-wrap:nowrap;white-space:nowrap;margin:0}.companion-controls{min-width:0}
 
 .companion-compact .companion-controls{display:flex;align-items:center;flex-wrap:nowrap;gap:8px;padding:8px;box-sizing:border-box;width:100%}.companion-compact .companion-controls>select{flex:1 1 110px;min-width:90px;width:110px;padding:5px 4px}.companion-compact #companionSectionControls{flex:0 1 auto;flex-wrap:nowrap;min-width:0;max-width:34%}.companion-compact #companionSectionControls select{min-width:45px;padding:5px 4px}.companion-compact .companion-controls .companion-opacity{flex:0 0 auto;gap:4px;padding:0;font-size:10px;white-space:nowrap}.companion-compact .companion-opacity input{width:60px;min-width:30px;margin:0}.companion-compact .companion-opacity output{min-width:25px}.companion-collapsed .companion-controls{display:none!important}
+
+/* Compact overlay content; toolbar stays at its readable original size. */
+.companion-compact>main{zoom:.8;padding:8px!important}
+.companion-compact .floorpanel{padding:8px;line-height:1.65}
+.companion-compact .floorpanel h2{font-size:15px;margin-bottom:8px}
+.companion-compact .floorpanel p{font-size:12px;margin:8px 0}
+.companion-compact .coordform{gap:6px;margin-bottom:8px}
+.companion-compact .coordform label{gap:4px;font-size:12px}
+.companion-compact .coordform input{box-sizing:border-box;width:70px;padding:5px}
+.companion-compact .coordform button{padding:5px 8px;font-size:12px}
+.companion-compact .coordform span{font-size:11px}
+.companion-compact .coordmap{width:min(100%,450px,calc((100vh - 190px) * .9));max-width:100%}
+.companion-compact .floormap{max-width:100%;max-height:calc((100vh - 190px) * 1.25);width:auto;height:auto}
+.companion-compact .floorpanel .caution{padding:7px 10px;margin:8px 0}
+.companion-compact .coordmap img{width:100%;height:auto}
