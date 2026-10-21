@@ -2,7 +2,7 @@ const nativeOverlayHost=Boolean(window.chrome&&window.chrome.webview);
 let nativeOverlayOpen=new Set();
 if(nativeOverlayHost)window.chrome.webview.addEventListener('message',event=>{const message=event.data;if(message&&message.kind==='overlay-status'&&Array.isArray(message.open)){nativeOverlayOpen=new Set(message.open);window.dispatchEvent(new Event('native-overlay-status'));}});
 // Each changed menu gets its own revision. Keep unchanged entries unchanged on later releases.
-const menuUpdateRevisions={'오버레이':'2026-10-21-overlay-native-1','암흑던전 HARD':'2026-10-21-dark-floors-1','로얄 베이스':'2026-10-21-materials-1'};
+const menuUpdateRevisions={'오버레이':'2026-10-21-overlay-native-2','암흑던전 HARD':'2026-10-21-dark-floors-1','로얄 베이스':'2026-10-21-materials-1'};
 const updateSeenKey='seondeng-menu-updates-v1';
 let seenMenuUpdates={};try{seenMenuUpdates=JSON.parse(localStorage.getItem(updateSeenKey)||'{}')||{};}catch{}
 function refreshUpdateBadges(){document.querySelectorAll('[data-name]').forEach(el=>{const name=el.dataset.name,rev=menuUpdateRevisions[name];let badge=el.querySelector('.menu-new');const unread=rev&&seenMenuUpdates[name]!==rev;if(unread&&!badge){badge=document.createElement('span');badge.className='menu-new';badge.textContent='NEW';badge.setAttribute('aria-label','업데이트된 내용');(el.classList.contains('card')?el.querySelector('h3'):el).append(badge);}else if(!unread&&badge)badge.remove();});}
@@ -32,9 +32,13 @@ function openCompanion(){
  if(isOverlayLocked(view)){showPublicLock(overlayViews.find(row=>row[0]===view)[1]);return;}document.body.classList.add('companion-mode','companion-compact');
  const previous=document.querySelector('.companion-toolbar');if(previous)previous.remove();
  const toolbar=document.createElement('header');toolbar.className='companion-toolbar';
- toolbar.innerHTML=`<div class="companion-titlebar"><strong>SeonDeng · 공략</strong><div><button type="button" id="companionCollapse" aria-label="내용 접기" aria-expanded="true">−</button><button type="button" id="companionClose" aria-label="창 닫기">×</button></div></div><div class="companion-controls"><select id="companionView" aria-label="던전 및 재료 선택"></select><div id="companionSectionControls"></div></div>${nativeOverlayHost?'<label class="companion-opacity">전체 투명도 <input type="range" min="25" max="100" step="1" value="82" id="companionOpacity"><output id="companionOpacityValue">82%</output></label>':'<div class="companion-native-note">게임이 비치는 투명창은 EXE에서 사용할 수 있습니다.</div>'}`;
+ toolbar.innerHTML=`<div class="companion-titlebar"><div class="companion-drag-handle" title="잡고 끌어서 창 이동"><strong>SeonDeng · 공략</strong><small>잡고 이동</small></div><div class="companion-window-buttons"><button type="button" id="companionCollapse" aria-label="내용 접기" aria-expanded="true">−</button><button type="button" id="companionClose" aria-label="창 닫기" title="오버레이 창 닫기">X</button></div></div><div class="companion-controls"><select id="companionView" aria-label="던전 및 재료 선택"></select><div id="companionSectionControls"></div></div>${nativeOverlayHost?'<label class="companion-opacity">전체 투명도 <input type="range" min="25" max="100" step="1" value="82" id="companionOpacity"><output id="companionOpacityValue">82%</output></label>':'<div class="companion-native-note">게임이 비치는 투명창은 EXE에서 사용할 수 있습니다.</div>'}`;
  document.body.prepend(toolbar);
- if(nativeOverlayHost){const slider=toolbar.querySelector('#companionOpacity');slider.oninput=()=>{toolbar.querySelector('#companionOpacityValue').textContent=slider.value+'%';window.chrome.webview.postMessage('overlay-opacity:'+slider.value);};toolbar.querySelector('.companion-titlebar strong').style.cursor='move';toolbar.querySelector('.companion-titlebar strong').onpointerdown=event=>{if(event.button===0)window.chrome.webview.postMessage('overlay-drag');};}
+ if(nativeOverlayHost){const slider=toolbar.querySelector('#companionOpacity');slider.oninput=()=>{toolbar.querySelector('#companionOpacityValue').textContent=slider.value+'%';window.chrome.webview.postMessage('overlay-opacity:'+slider.value);};const handle=toolbar.querySelector('.companion-drag-handle');let dragging=false;
+handle.onpointerdown=event=>{if(event.button!==0)return;event.preventDefault();dragging=true;handle.setPointerCapture(event.pointerId);window.chrome.webview.postMessage('overlay-drag-start');};
+handle.onpointermove=()=>{if(dragging)window.chrome.webview.postMessage('overlay-drag-move');};
+const endDrag=()=>{if(dragging){dragging=false;window.chrome.webview.postMessage('overlay-drag-end');}};
+handle.onpointerup=event=>{endDrag();if(handle.hasPointerCapture(event.pointerId))handle.releasePointerCapture(event.pointerId);};handle.onpointercancel=endDrag;handle.onlostpointercapture=endDrag;}
 
  const selector=toolbar.querySelector('#companionView');
  const views=overlayViews;
@@ -52,4 +56,5 @@ function openCompanion(){
  }
  selector.onchange=showView;toolbar.querySelector('#companionClose').onclick=()=>{if(nativeOverlayHost)window.chrome.webview.postMessage('overlay-close-self');else window.close();};toolbar.querySelector('#companionCollapse').onclick=()=>{const collapsed=document.body.classList.toggle('companion-collapsed');const btn=toolbar.querySelector('#companionCollapse');btn.textContent=collapsed?'+':'−';btn.setAttribute('aria-expanded',String(!collapsed));};showView();
 }
+
 
