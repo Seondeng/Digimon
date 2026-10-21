@@ -15,7 +15,7 @@ jobs:
     timeout-minutes: 30
     env:
       GH_TOKEN: ${{ github.token }}
-      RELEASE_VERSION: 1.4.2
+      RELEASE_VERSION: 1.4.3
     steps:
       - uses: actions/checkout@v4
         with:
@@ -57,6 +57,9 @@ jobs:
       - name: Build verified public EXE
         shell: cmd
         run: build-release.cmd
+      - name: Check native overlay and available antivirus protection
+        shell: powershell
+        run: tools/test_overlay.ps1
       - name: Publish release before updating manifest
         shell: pwsh
         run: |
