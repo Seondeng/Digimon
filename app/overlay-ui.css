@@ -53,3 +53,12 @@
 /* Keep Royal Base material pictures compact without scaling labels or navigation. */
 .companion-compact .royal-material-detail .keypair a{width:70%;max-width:300px;margin-inline:auto}
 .companion-compact .royal-material-detail .keypair img{width:100%;height:auto;zoom:1}
+
+/* Short material rows preserve switches without captions. */
+.overlay-material-grid{gap:10px}
+.overlay-material-grid .overlay-dungeon-card{min-height:54px;display:flex;align-items:center}
+.overlay-material-grid .overlay-dungeon-body{box-sizing:border-box;width:100%;padding:10px 12px}
+.overlay-material-grid .overlay-dungeon-title{width:100%;gap:6px}
+.overlay-material-grid .overlay-dungeon-title h3{font-size:13px}
+.overlay-material-grid .overlay-item-title{gap:3px}
+.overlay-material-grid .overlay-settings-button{width:22px;height:24px;font-size:17px}
