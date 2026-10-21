@@ -49,3 +49,7 @@
 .companion-compact .mazemap,.companion-compact .watermap{width:85%;margin-left:auto;margin-right:auto}
 .companion-compact .coordmap{width:min(85%,382px,calc((100vh - 190px) * .765))}
 .companion-compact .coordmap img,.companion-compact .mazemap img,.companion-compact .watermap img{zoom:1}
+
+/* Keep Royal Base material pictures compact without scaling labels or navigation. */
+.companion-compact .royal-material-detail .keypair a{width:70%;max-width:300px;margin-inline:auto}
+.companion-compact .royal-material-detail .keypair img{width:100%;height:auto;zoom:1}
