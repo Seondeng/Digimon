@@ -2,7 +2,7 @@ const nativeOverlayHost=Boolean(window.chrome&&window.chrome.webview);
 let nativeOverlayOpen=new Set();
 if(nativeOverlayHost)window.chrome.webview.addEventListener('message',event=>{const message=event.data;if(message&&message.kind==='overlay-status'&&Array.isArray(message.open)){nativeOverlayOpen=new Set(message.open);window.dispatchEvent(new Event('native-overlay-status'));}});
 // Each changed menu gets its own revision. Keep unchanged entries unchanged on later releases.
-const menuUpdateRevisions={'오버레이':'2026-10-21-overlay-native-6','암흑던전 HARD':'2026-10-21-dark-floors-1','로얄 베이스':'2026-10-21-materials-1'};
+const menuUpdateRevisions={'오버레이':'2026-10-21-overlay-native-7','암흑던전 HARD':'2026-10-21-dark-floors-1','로얄 베이스':'2026-10-21-materials-1'};
 const updateSeenKey='seondeng-menu-updates-v1';
 let seenMenuUpdates={};try{seenMenuUpdates=JSON.parse(localStorage.getItem(updateSeenKey)||'{}')||{};}catch{}
 function refreshUpdateBadges(){document.querySelectorAll('[data-name]').forEach(el=>{const name=el.dataset.name,rev=menuUpdateRevisions[name];let badge=el.querySelector('.menu-new');const unread=rev&&seenMenuUpdates[name]!==rev;if(unread&&!badge){badge=document.createElement('span');badge.className='menu-new';badge.textContent='NEW';badge.setAttribute('aria-label','업데이트된 내용');(el.classList.contains('card')?el.querySelector('h3'):el).append(badge);}else if(!unread&&badge)badge.remove();});}
