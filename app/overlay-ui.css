@@ -43,3 +43,9 @@
 
 /* Small-window navigation must not hide unselected material buttons. */
 .companion-compact .royal-material-tree button,.companion-compact .royal-material-tree button:not(.active){display:block!important;visibility:visible}
+
+/* Reduce pictures only; retain text and control sizes. Map annotations share their frame. */
+.companion-compact main img:not(.coordmap img):not(.mazemap img):not(.watermap img){zoom:.85}
+.companion-compact .mazemap,.companion-compact .watermap{width:85%;margin-left:auto;margin-right:auto}
+.companion-compact .coordmap{width:min(85%,382px,calc((100vh - 190px) * .765))}
+.companion-compact .coordmap img,.companion-compact .mazemap img,.companion-compact .watermap img{zoom:1}
