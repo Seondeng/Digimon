@@ -1,0 +1,31 @@
+{
+  "target": "dark-dungeon-characters.webp",
+  "size": 43988414,
+  "sha256": "808b5a1219e390716587fcfea456dda5993acf95f11ce1dd889d440dee24c888",
+  "parts": [
+    {
+      "path": "dark-dungeon-characters.part01",
+      "size": 8388608
+    },
+    {
+      "path": "dark-dungeon-characters.part02",
+      "size": 8388608
+    },
+    {
+      "path": "dark-dungeon-characters.part03",
+      "size": 8388608
+    },
+    {
+      "path": "dark-dungeon-characters.part04",
+      "size": 8388608
+    },
+    {
+      "path": "dark-dungeon-characters.part05",
+      "size": 8388608
+    },
+    {
+      "path": "dark-dungeon-characters.part06",
+      "size": 2045374
+    }
+  ]
+}

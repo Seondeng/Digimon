@@ -25,6 +25,8 @@ for row in manifest['files']:
  with urlopen(request,timeout=60) as response:data=response.read(32*1024*1024)
  if hashlib.sha256(data).hexdigest()!=row['sha256']:raise ValueError('Asset digest mismatch: '+row['path'])
  dst.write_bytes(data)
+# Reassemble the lossless map from API-sized repository parts.
+subprocess.run([sys.executable,'tools/assemble_release_assets.py'],check=True)
 # Microsoft WebView2 SDK from the official pinned NuGet package.
 pkg=cache/'webview2.zip'
 with urlopen('https://api.nuget.org/v3-flatcontainer/microsoft.web.webview2/1.0.3537.50/microsoft.web.webview2.1.0.3537.50.nupkg',timeout=60) as r:pkg.write_bytes(r.read(64*1024*1024))
