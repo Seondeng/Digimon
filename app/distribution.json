@@ -1,11 +1,9 @@
 {
   "edition": "public",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "locked_menus": [
     "퀴즈",
-    "송곳산 던전",
     "지하통로 HARD",
-    "언더포레스트",
     "헬즈필드"
   ],
   "creator": "선댕"

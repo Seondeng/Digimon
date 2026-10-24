@@ -96,9 +96,9 @@ static int prepareApp(void){
 }
 
 static int validOverlayId(const wchar_t *id){
- const wchar_t *ids[]={L"maze-hard",L"royal-base",L"waterspace",L"dark-hard",L"xuanwumon",L"baihumon",L"zhuqiaomon",L"azulongmon",L"infinite-mountain",L"materials",L"maze-materials",L"dark-materials",L"xuanwu-materials",L"baihu-materials",L"zhuqiao-materials"
+ const wchar_t *ids[]={L"maze-hard",L"royal-base",L"waterspace",L"dark-hard",L"xuanwumon",L"baihumon",L"zhuqiaomon",L"azulongmon",L"infinite-mountain",L"materials",L"maze-materials",L"dark-materials",L"xuanwu-materials",L"baihu-materials",L"zhuqiao-materials",L"spike-mountain",L"unforest",L"spike-materials"
 #ifdef FULL_EDITION
- ,L"spike-mountain",L"underground-hard",L"unforest",L"hellsfield",L"quiz",L"spike-materials",L"underground-materials"
+ ,L"underground-hard",L"hellsfield",L"quiz",L"underground-materials"
 #endif
  };
  for(size_t i=0;i<sizeof(ids)/sizeof(ids[0]);i++)if(!wcscmp(id,ids[i]))return 1;
