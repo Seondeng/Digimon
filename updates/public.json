@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "edition": "public",
-  "version": "1.5.3",
-  "url": "https://github.com/Seondeng/Digimon/releases/download/v1.5.3/Seondaeng_Digimon.exe",
-  "size": 140572672,
-  "sha256": "6191e51af58e465793442ecaef2faffd264ae154f5ab52a2603c272409fd9011"
+  "version": "1.6.0",
+  "url": "https://github.com/Seondeng/Digimon/releases/download/v1.6.0/Seondaeng_Digimon.exe",
+  "size": 140574208,
+  "sha256": "669c98be43288997a3333387cfd8eb86039d4ff7e99f2cce014247071a04ab2b"
 }
