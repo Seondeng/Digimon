@@ -43,6 +43,8 @@ with ZipFile(native/'payload.zip','w',ZIP_DEFLATED,compresslevel=6) as z:
 digest=hashlib.sha256((native/'payload.zip').read_bytes()).hexdigest()[:12]
 (native/'release_id.h').write_text(f'#define RELEASE_ID L"{version}-{digest}"\n')
 release=root/'release';release.mkdir(exist_ok=True);exe=release/'Seondaeng_Digimon.exe'
+subprocess.run(['cl','/nologo','/O2','/utf-8','/std:c11','test_webview_startup.c','/Fe:'+str(cache/'test_webview_startup.exe'),'/link','shell32.lib','shlwapi.lib','user32.lib'],cwd=native,check=True)
+subprocess.run([str(cache/'test_webview_startup.exe')],check=True,timeout=30)
 # Called from a VS developer command prompt, installed on windows-latest.
 subprocess.run(['rc','/nologo','/fo','app.res','app.rc'],cwd=native,check=True)
 subprocess.run(['cl','/nologo','/O2','/utf-8','/std:c11','/D_CRT_SECURE_NO_WARNINGS','launcher.c','app.res','/Fe:'+str(exe),'/link','/SUBSYSTEM:WINDOWS','/ENTRY:wWinMainCRTStartup','winhttp.lib','ole32.lib','shell32.lib','shlwapi.lib','uuid.lib','gdi32.lib','user32.lib'],cwd=native,check=True)
