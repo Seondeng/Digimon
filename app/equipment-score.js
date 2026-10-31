@@ -352,7 +352,7 @@
   {
     "id": "spirit-double-high",
     "name": "상급 더블 스피릿",
-    "score": 270,
+    "score": 275,
     "category": "spirit",
     "maxCount": 3
   },
