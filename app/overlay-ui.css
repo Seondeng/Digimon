@@ -62,3 +62,7 @@
 .overlay-material-grid .overlay-dungeon-title h3{font-size:13px}
 .overlay-material-grid .overlay-item-title{gap:3px}
 .overlay-material-grid .overlay-settings-button{width:22px;height:24px;font-size:17px}
+
+.companion-compact #traitForm{display:flex;flex-wrap:wrap;gap:8px;align-items:end}
+.companion-compact #traitForm label{min-width:0}
+.companion-compact .traitoptions{grid-template-columns:1fr}

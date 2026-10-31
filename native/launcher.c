@@ -96,7 +96,7 @@ static int prepareApp(void){
 }
 
 static int validOverlayId(const wchar_t *id){
- const wchar_t *ids[]={L"maze-hard",L"royal-base",L"waterspace",L"dark-hard",L"xuanwumon",L"baihumon",L"zhuqiaomon",L"azulongmon",L"infinite-mountain",L"materials",L"maze-materials",L"dark-materials",L"xuanwu-materials",L"baihu-materials",L"zhuqiao-materials",L"spike-mountain",L"unforest",L"spike-materials"
+ const wchar_t *ids[]={L"trait-chance",L"maze-hard",L"royal-base",L"waterspace",L"dark-hard",L"xuanwumon",L"baihumon",L"zhuqiaomon",L"azulongmon",L"infinite-mountain",L"materials",L"maze-materials",L"dark-materials",L"xuanwu-materials",L"baihu-materials",L"zhuqiao-materials",L"spike-mountain",L"unforest",L"spike-materials"
 #ifdef FULL_EDITION
  ,L"underground-hard",L"hellsfield",L"quiz",L"underground-materials"
 #endif
