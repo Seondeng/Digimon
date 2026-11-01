@@ -1,10 +1,9 @@
 {
   "edition": "public",
-  "version": "1.6.5",
+  "version": "1.6.6",
   "locked_menus": [
     "퀴즈",
-    "지하통로 HARD",
-    "헬즈필드"
+    "지하통로 HARD"
   ],
   "creator": "선댕"
 }
