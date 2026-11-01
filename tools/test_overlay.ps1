@@ -19,6 +19,7 @@ public class OverlayWindowProbe {
  [DllImport("user32.dll")] public static extern uint GetWindowThreadProcessId(IntPtr h,out uint pid);
  [DllImport("user32.dll",EntryPoint="GetWindowLongW")] public static extern int GetWindowLong(IntPtr h,int index);
  [DllImport("user32.dll")] public static extern bool IsWindowVisible(IntPtr h);
+ [DllImport("user32.dll")] public static extern bool GetWindowDisplayAffinity(IntPtr h,out uint affinity);
  [DllImport("user32.dll")] public static extern bool GetLayeredWindowAttributes(IntPtr h,out uint key,out byte alpha,out uint flags);
  [DllImport("user32.dll")] public static extern bool PostMessage(IntPtr h,uint msg,IntPtr w,IntPtr l);
  public static IntPtr Find(uint pid){IntPtr result=IntPtr.Zero;EnumWindows((h,p)=>{uint id;GetWindowThreadProcessId(h,out id);if(id==pid&&IsWindowVisible(h)){result=h;return false;}return true;},IntPtr.Zero);return result;}
@@ -39,6 +40,9 @@ try {
         Start-Sleep -Milliseconds 250
     }
     if ($handle -eq [IntPtr]::Zero) { throw 'Overlay window did not appear.' }
+    [uint32]$captureAffinity=0
+    if (-not [OverlayWindowProbe]::GetWindowDisplayAffinity($handle,[ref]$captureAffinity) -or $captureAffinity -ne 0x11) { throw 'Actual overlay capture exclusion is missing.' }
+    Write-Host 'Actual application overlay capture affinity is 0x11.'
     $style = [OverlayWindowProbe]::GetWindowLong($handle,-20)
     if (($style -band 0x80000) -eq 0 -or ($style -band 8) -eq 0) { throw 'Layered/topmost window flags missing.' }
     [uint32]$key=0;[byte]$alpha=0;[uint32]$flags=0
