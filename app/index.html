@@ -33,6 +33,38 @@ function markRoyal(){const x=Number(document.querySelector('#coordX').value),y=N
 
 const dungeonInfo={"미궁 HARD":{"entry":{"입장 장비점수":"900점","입장 재료 · 비용":"정체불명의 초대장\n머드프리지몬 마을 꼬마프리지몬에게 700만 Bit로 구매","입장 레벨":"리더 Lv.110 이상 · 로버스트 테이머 이상","입장 위치 · NPC":"정체불명의 초대장 사용으로 진입","입장 인원":"1~5명","입장 횟수 · 초기화":"클리어 후 1시간 대기"},"drops":[["발바몬","아발론즈게이트 · 황제의 송곳니 (각 5개)"]],"sources":[1266,1395,1406]},"로얄 베이스":{"entry":{"입장 장비점수":"900점","입장 재료 · 비용":"하늘던전 2층 듀크몬: 문양으로 층별 이동기 교환\n할매몬 마을 뿌띠몬: 1층 이동기 1,000만 / 2층 3,000만 / 3층 5,000만 Bit","입장 레벨":"리더 Lv.110 이상 · 로버스트 테이머 이상","입장 위치 · NPC":"하늘던전 2층 듀크몬","입장 인원":"1~5명","입장 횟수 · 초기화":"클리어 후 1시간 대기"},"drops":[["1층 주요 보스","비트쿠폰 1,000만·5,000만·1억"],["데크스몬","로얄나이츠포스 · 황제의 송곳니 (각 3개)"],["오메가몬X","로얄나이츠포스 (3개)"]],"sources":[1266,1305,1395,1406]},"워터스페이스":{"entry":{"입장 장비점수":"1,800점","입장 재료 · 비용":"데크스몬의 정수 (로얄 베이스 클리어 보상)","입장 레벨":"리더 Lv.110 이상 · 로버스트 테이머 이상","입장 위치 · NPC":"스퀘어월드 서쪽 (102,13) · 파티/솔로 모드 구분 필요","입장 인원":"던전 안내 UI 최소 1명 (2026-04-15 정정) · 모드별 조건 확인 필요","입장 횟수 · 초기화":"클리어 후 1시간 대기"},"drops":[["리바이어몬","심해의 캡슐 · 리바이어몬 진화카드 1·2·3 · 워터스페이스 올 마스터 · 질투의 디아크 · 리바이어몬의 정수 · 테이머 칭호 질투하는"]],"sources":[1094,1266,1466]},"암흑던전 HARD":{"entry":{"입장 장비점수":"2,300점","입장 재료 · 비용":"머드프리지몬 마을 할배몬 퀘스트 보상: 암흑던전 3층 이동기\n암흑던전 3층 이동 아이템: 시간마을 타임몬에게 100만 Bit로 구매","입장 레벨":"리더 Lv.120 이상 · 로버스트 테이머 이상","입장 인원":"1~5명","입장 횟수 · 초기화":"클리어 후 1시간 대기"},"drops":[["키메라몬","아발론즈게이트 · 황제의 송곳니 (각 3개)"]],"sources":[1266,1395,1406]},"현무몬 던전":{"entry":{"입장 장비점수":"3,000점","입장 재료 · 비용":"좌표 데이터(N): 네트 50개\n미지·신비 10개\n개굴몬마을 상점 개당 200만 Bit","입장 레벨":"리더 Lv.130 이상 · 로버스트 테이머 이상","입장 위치 · NPC":"개굴몬숲 동쪽 비범한 할배몬","입장 인원":"3명","입장 횟수 · 초기화":"재입장 대기 1시간"},"drops":[["현무몬","현무몬의 디지코드"],["현무몬","로얄나이츠포스 · 아발론즈게이트 · 황제의 송곳니 (각 9개)"]],"sources":[1217,1266,1366,1391,1406,1466]},"백호몬 던전":{"entry":{"입장 장비점수":"3,000점","입장 재료 · 비용":"좌표 데이터(W): 네트 50개\n미지·신비 10개\n개굴몬마을 상점 개당 200만 Bit","입장 레벨":"리더 Lv.130 이상 · 로버스트 테이머 이상","입장 위치 · NPC":"개굴몬숲 동쪽 비범한 할배몬","입장 인원":"1명","입장 횟수 · 초기화":"재입장 대기 1시간"},"drops":[["백호몬","로얄나이츠포스 · 아발론즈게이트 · 황제의 송곳니 (각 9개)"],["오메가몬 즈왈트 보상","최고급진화카드상자 · 오메가몬즈왈트D Ⅰ·Ⅱ·Ⅲ 진화카드"]],"sources":[1282,1366,1391,1406,1466]},"주작몬 던전":{"entry":{"입장 장비점수":"3,000점","입장 재료 · 비용":"좌표 데이터(S): 네트 50개\n미지·신비 10개\n개굴몬마을 상점 개당 200만 Bit","입장 레벨":"리더 Lv.130 이상 · 로버스트 테이머 이상","입장 위치 · NPC":"개굴몬숲 동쪽 비범한 할배몬","입장 인원":"3명","입장 횟수 · 초기화":"재입장 대기 1시간"},"drops":[["주작몬","로얄나이츠포스 · 아발론즈게이트 · 황제의 송곳니 (각 9개)"]],"sources":[1366,1391,1406,1466]},"무한산":{"entry":{"입장 장비점수":"1,500점 이상 / 권장 3,000점","입장 재료 · 비용":"오래된 동전 1개 · 공중 전화 부스에서 하루 1회 수령, 유효기간 1일","입장 레벨":"타락한 무한산 기준: 리더 Lv.70 이상 · 로버스트 테이머 이상","입장 위치 · NPC":"개굴몬마을 공중 전화 부스","입장 인원":"2~5명","제한 시간":"60분"},"drops":[["데블몬 클리어","경험치 · 낮은 확률의 디지몬 칭호 및 테이머 이펙트 (명칭 추가 확인 필요)"]],"sources":[1392,1466]},"청룡몬 던전":{"entry":{},"drops":[],"sources":[]}};
 const reviewRoutes={'미궁 HARD':'maze-hard','로얄 베이스':'royal-base','워터스페이스':'waterspace','암흑던전 HARD':'dark-hard','현무몬 던전':'xuanwumon','백호몬 던전':'baihumon','주작몬 던전':'zhuqiaomon','청룡몬 던전':'azulongmon','송곳산 던전':'spike-mountain','지하통로 HARD':'underground-hard','언더포레스트':'unforest','헬즈필드':'hellsfield','숲속의 천사성':'forest-angel-castle','퀴즈':'quiz','무한산':'infinite-mountain','오버라이트':'overwrite','특성 확률':'trait-chance','장비점수 계산기':'equipment-score'};
+Object.assign(dungeonInfo,{
+ '송곳산 던전':{
+  entry:{
+   '입장 장비점수':'3,400점',
+   '입장 재료 · 비용':'그라운드제로 15개',
+   '입장 레벨':'리더 Lv.140 이상 · 로버스트 테이머 이상',
+   '입장 위치 · NPC':'할매몬마을 장한솔 옆',
+   '입장 인원':'2명',
+   '입장 횟수 · 초기화':'재입장 대기 1시간'
+  },drops:[],sources:[]
+ },
+ '언더포레스트':{
+  entry:{
+   '입장 장비점수':'3,400점',
+   '입장 재료 · 비용':'50,000,000 Bit\n재입장할 때마다 50,000,000 Bit 추가\n매일 오전 6시에 입장 비용 초기화',
+   '입장 레벨':'리더 Lv.140 이상 · 로버스트 테이머 이상',
+   '입장 위치 · NPC':'파크타운 12시 방향 디지털신호분석기',
+   '입장 인원':'1명',
+   '입장 횟수 · 초기화':'재입장 대기 10분'
+  },drops:[],sources:[]
+ },
+ '헬즈필드':{
+  entry:{
+   '입장 장비점수':'4,400점',
+   '입장 재료 · 비용':'헬즈필드행 티켓 1개\n로얄 베이스 1층 또는 미궁 HARD 1층의 오메가샤우트몬 또는 지크그레이몬을 잡으면 확률적으로 획득\n할매몬 마을 쁘띠몬 NPC에게 1억 Bit로 구매 가능',
+   '입장 레벨':'리더 Lv.130 이상 · 로버스트 테이머 이상',
+   '입장 위치 · NPC':'시간마을 1시 방향 게시판 옆 바알몬',
+   '입장 인원':'1명',
+   '입장 횟수 · 초기화':'재입장 대기 1시간'
+  },drops:[],sources:[]
+ }
+});
 const reviewSections={
 '장비점수 계산기':[],
 '입장조건':['입장 레벨','입장 장비점수','입장 위치 · NPC','입장 재료 · 비용','입장 인원','입장 횟수 · 초기화'],
@@ -52,18 +84,56 @@ const reviewSections={
 '강화 단계':['문장 선택','현재 단계','목표 단계'],
 '강화 재료':['필요 재료','강화 비용'],
 '강화 정보':['단계별 효과','성공 확률','실패 시 처리']};
-function openReview(name,tab=0){if(names.includes(name)&&tab===(name==='퀴즈'?2:3))tab=0;if(name==='로얄 베이스'&&tab===4){openDungeon(name,3);return;}markMenuViewed(name);if(publicLockedNames.has(name)){showPublicLock(name);return;}if((name==='미궁 HARD'||name==='로얄 베이스')&&(tab===1||tab===2)){openDungeon(name);return;}const waterQuery=new URLSearchParams(location.hash.split('?')[1]||'');if(names.includes(name)&&name!=='퀴즈'&&tab===2)tab=1;if(!reviewRoutes[name])return;document.querySelectorAll('body>main').forEach(el=>el.hidden=el.id!=='reviewPage');document.querySelector('#reviewTitle').textContent=name;const isDungeon=names.includes(name);document.querySelector('#reviewCategory').textContent=isDungeon?'DUNGEON GUIDE':'GROWTH TOOLS';document.querySelectorAll('#nav button,#nav [data-home]').forEach(el=>el.classList.toggle('active',el.dataset.name===name));const tabs=name==='장비점수 계산기'?['장비점수 계산기']:name==='퀴즈'?['입장조건','지도·공략','드랍템','재료']:name==='오버라이트'?['디지몬 선택','필요 재료','진행 방법']:name==='특성 확률'?['지능','아이템 · 효과','결과']:name==='문장강화'?['강화 단계','강화 재료','강화 정보']:['입장조건','지도·공략','공략 방법','드랍템','재료'];if(tab<0||tab>=tabs.length)tab=0;const hero=document.querySelector('#reviewHero');const card=[...document.querySelectorAll('.card')].find(el=>el.dataset.name===name);hero.hidden=!card;if(card){const art=card.querySelector('.art');const cs=getComputedStyle(art);hero.style.backgroundImage=cs.backgroundImage;hero.style.backgroundSize="cover";hero.style.backgroundPosition="center";hero.dataset.dungeon=name;}const nav=document.querySelector('#reviewTabs');nav.hidden=name==='특성 확률'||name==='오버라이트'||name==='장비점수 계산기';nav.replaceChildren();const tabOrder=isDungeon?(name==='퀴즈'?[0,1,3,2]:[0,1,4,2,3]):tabs.map((_,i)=>i);tabOrder.forEach(i=>{const label=tabs[i];if(isDungeon&&label==='드랍템')return;if(isDungeon&&name!=='퀴즈'&&i===2)return;const btn=document.createElement('button');btn.textContent=label;btn.className=i===tab?'selected':'';btn.setAttribute('role','tab');btn.setAttribute('aria-selected',String(i===tab));btn.onclick=()=>{if((name==='미궁 HARD'||name==='로얄 베이스')&&(i===1||i===2))openDungeon(name);else openReview(name,i)};nav.append(btn)});document.querySelector('#reviewPanel').innerHTML='<h2>'+tabs[tab]+'</h2><div class="reviewfields">'+reviewSections[tabs[tab]].map(label=>'<article class="reviewfield"><strong>'+label+'</strong><p>내용 등록 전</p></article>').join('')+'</div>';renderDungeonInfo(name,tabs[tab]);if(name==='장비점수 계산기')renderEquipmentScore();history.replaceState(null,'','#'+reviewRoutes[name]+((tab||name==='미궁 HARD'||name==='로얄 베이스')?'?tab='+tab:''));window.scrollTo(0,0);if(name==='워터스페이스'&&(tab===1||tab===2))renderWaterGuide(waterQuery);if(name==='암흑던전 HARD'&&tab===1)renderDarkGuide(waterQuery.get('section'));if(name==='백호몬 던전'&&tab===1)renderBaihumonGuide(waterQuery.get('section'));if(['현무몬 던전','주작몬 던전'].includes(name)&&tab===1)renderBeastGuide(name,waterQuery.get('section'));if(['현무몬 던전','백호몬 던전','주작몬 던전'].includes(name)&&tab===4)renderBeastMaterials(name);if(['송곳산 던전','언더포레스트','숲속의 천사성'].includes(name)&&tab===1)renderSimpleDungeonGuide(name,waterQuery.get('section'));if(name==='특성 확률')renderCombinedTrait();if(name==='오버라이트')renderOverwrite();}
+function openReview(name,tab=0){if(names.includes(name)&&tab===(name==='퀴즈'?2:3))tab=0;if(name==='로얄 베이스'&&tab===4){openDungeon(name,3);return;}markMenuViewed(name);if(publicLockedNames.has(name)){showPublicLock(name);return;}if((name==='미궁 HARD'||name==='로얄 베이스')&&(tab===1||tab===2)){openDungeon(name);return;}const waterQuery=new URLSearchParams(location.hash.split('?')[1]||'');if(names.includes(name)&&name!=='퀴즈'&&tab===2)tab=1;if(!reviewRoutes[name])return;document.querySelectorAll('body>main').forEach(el=>el.hidden=el.id!=='reviewPage');document.querySelector('#reviewTitle').textContent=name;const isDungeon=names.includes(name);document.querySelector('#reviewCategory').textContent=isDungeon?'DUNGEON GUIDE':'GROWTH TOOLS';document.querySelectorAll('#nav button,#nav [data-home]').forEach(el=>el.classList.toggle('active',el.dataset.name===name));const tabs=name==='장비점수 계산기'?['장비점수 계산기']:name==='퀴즈'?['입장조건','지도·공략','드랍템','재료']:name==='오버라이트'?['디지몬 선택','필요 재료','진행 방법']:name==='특성 확률'?['지능','아이템 · 효과','결과']:name==='문장강화'?['강화 단계','강화 재료','강화 정보']:['입장조건','지도·공략','공략 방법','드랍템','재료'];if(tab<0||tab>=tabs.length)tab=0;const hero=document.querySelector('#reviewHero');const card=[...document.querySelectorAll('.card')].find(el=>el.dataset.name===name);hero.hidden=!card;if(card){const art=card.querySelector('.art');const cs=getComputedStyle(art);hero.style.backgroundImage=cs.backgroundImage;hero.style.backgroundSize="cover";hero.style.backgroundPosition="center";hero.dataset.dungeon=name;}const nav=document.querySelector('#reviewTabs');nav.hidden=name==='특성 확률'||name==='오버라이트'||name==='장비점수 계산기';nav.replaceChildren();const tabOrder=isDungeon?(name==='퀴즈'?[0,1,3,2]:[0,1,4,2,3]):tabs.map((_,i)=>i);tabOrder.forEach(i=>{const label=tabs[i];if(isDungeon&&label==='드랍템')return;if(isDungeon&&name!=='퀴즈'&&i===2)return;const btn=document.createElement('button');btn.textContent=label;btn.className=i===tab?'selected':'';btn.setAttribute('role','tab');btn.setAttribute('aria-selected',String(i===tab));btn.onclick=()=>{if((name==='미궁 HARD'||name==='로얄 베이스')&&(i===1||i===2))openDungeon(name);else openReview(name,i)};nav.append(btn)});const section=tabs[tab];
+const useStandardEntryOrder=section==='입장조건'&&['송곳산 던전','언더포레스트','헬즈필드','숲속의 천사성'].includes(name);
+const fields=useStandardEntryOrder?dungeonEntryRows({}).map(([label])=>label):reviewSections[section];
+document.querySelector('#reviewPanel').innerHTML='<h2>'+tabs[tab]+'</h2><div class="reviewfields">'+fields.map(label=>'<article class="reviewfield"><strong>'+label+'</strong><p>내용 등록 전</p></article>').join('')+'</div>';renderDungeonInfo(name,tabs[tab]);if(name==='장비점수 계산기')renderEquipmentScore();history.replaceState(null,'','#'+reviewRoutes[name]+((tab||name==='미궁 HARD'||name==='로얄 베이스')?'?tab='+tab:''));window.scrollTo(0,0);if(name==='워터스페이스'&&(tab===1||tab===2))renderWaterGuide(waterQuery);if(name==='암흑던전 HARD'&&tab===1)renderDarkGuide(waterQuery.get('section'));if(name==='백호몬 던전'&&tab===1)renderBaihumonGuide(waterQuery.get('section'));if(['현무몬 던전','주작몬 던전'].includes(name)&&tab===1)renderBeastGuide(name,waterQuery.get('section'));if(['현무몬 던전','백호몬 던전','주작몬 던전'].includes(name)&&tab===4)renderBeastMaterials(name);if(['송곳산 던전','언더포레스트','숲속의 천사성'].includes(name)&&tab===1)renderSimpleDungeonGuide(name,waterQuery.get('section'));if(name==='특성 확률')renderCombinedTrait();if(name==='오버라이트')renderOverwrite();}
 
 function renderSimpleDungeonGuide(name,section='map'){
- const selected=section==='guide'?'guide':'map';
+ const items=name==='송곳산 던전'?[
+  ['map','지도'],
+  ['piedmon-card','피에몬 카드'],
+  ['whamon','고래몬'],
+  ['metalseadramon','메탈시드라몬'],
+  ['cherrymon','쥬레이몬'],
+  ['metaletemon','메탈에테몬'],
+  ['puppetmon','피노키몬'],
+  ['batpuppetmon','배트퍼펫몬'],
+  ['machinedramon','파워드라몬'],
+  ['ladydevimon','레이디데블몬'],
+  ['piedmon','피에몬'],
+  ['apocalymon','아포카리몬']
+ ]:[['map','지도'],['guide','공략']];
+ const requested=section==='guide'?items[1][0]:section;
+ const [selected,selectedLabel]=items.find(([id])=>id===requested)||items[0];
  const panel=document.querySelector('#reviewPanel');panel.replaceChildren();
  const layout=document.createElement('div');layout.className='baihuguide';
  const nav=document.createElement('nav');nav.className='baihumenu';nav.setAttribute('aria-label',name+' 지도 및 공략');nav.setAttribute('role','tablist');
  const content=document.createElement('section');content.className='baihucontent';content.id='simpleDungeonGuideContent';content.setAttribute('role','tabpanel');
- const items=[['map','지도'],['guide','공략']];
- items.forEach(([id,label],i)=>{const button=document.createElement('button');button.type='button';button.id='simpleDungeonGuide-'+id;button.textContent=label;button.className=id===selected?'selected':'';button.setAttribute('role','tab');button.setAttribute('aria-selected',String(id===selected));button.setAttribute('aria-controls',content.id);button.tabIndex=id===selected?0:-1;button.onclick=()=>renderSimpleDungeonGuide(name,id);button.onkeydown=event=>{let next;if(['ArrowDown','ArrowRight','ArrowUp','ArrowLeft'].includes(event.key))next=1-i;else if(event.key==='Home')next=0;else if(event.key==='End')next=1;else return;event.preventDefault();renderSimpleDungeonGuide(name,items[next][0]);document.querySelector('#reviewPanel .baihumenu').children[next].focus();};nav.append(button);});
+ items.forEach(([id,label],i)=>{
+  const button=document.createElement('button');
+  button.type='button';button.id='simpleDungeonGuide-'+id;button.textContent=label;
+  button.className=id===selected?'selected':'';
+  button.setAttribute('role','tab');
+  button.setAttribute('aria-selected',String(id===selected));
+  button.setAttribute('aria-controls',content.id);
+  button.tabIndex=id===selected?0:-1;
+  button.onclick=()=>renderSimpleDungeonGuide(name,id);
+  button.onkeydown=event=>{
+   let next;
+   if(['ArrowDown','ArrowRight'].includes(event.key))next=(i+1)%items.length;
+   else if(['ArrowUp','ArrowLeft'].includes(event.key))next=(i-1+items.length)%items.length;
+   else if(event.key==='Home')next=0;
+   else if(event.key==='End')next=items.length-1;
+   else return;
+   event.preventDefault();
+   renderSimpleDungeonGuide(name,items[next][0]);
+   document.getElementById('simpleDungeonGuide-'+items[next][0]).focus();
+  };
+  nav.append(button);
+ });
  content.setAttribute('aria-labelledby','simpleDungeonGuide-'+selected);
- const heading=document.createElement('h2');heading.textContent=selected==='map'?'지도':'공략';
+ const heading=document.createElement('h2');heading.textContent=selectedLabel;
  const note=document.createElement('p');note.className='wbnote';note.textContent=heading.textContent+' 내용 등록 전';content.append(heading,note);
  layout.append(nav,content);panel.append(layout);
  history.replaceState(null,'','#'+reviewRoutes[name]+'?tab=1&section='+selected);
@@ -85,12 +155,125 @@ function renderBeastGuide(name,section='map'){
  items.forEach(([id,label],i)=>{const button=document.createElement('button');button.type='button';button.textContent=label;button.className=id===selected?'selected':'';button.setAttribute('role','tab');button.setAttribute('aria-selected',String(id===selected));button.setAttribute('aria-controls',content.id);button.tabIndex=id===selected?0:-1;button.onclick=()=>renderBeastGuide(name,id);button.onkeydown=event=>{let next;if(['ArrowDown','ArrowRight'].includes(event.key))next=(i+1)%items.length;else if(['ArrowUp','ArrowLeft'].includes(event.key))next=(i-1+items.length)%items.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=items.length-1;else return;event.preventDefault();renderBeastGuide(name,items[next][0]);document.querySelector('#reviewPanel .baihumenu').children[next].focus();};nav.append(button);});
  const heading=document.createElement('h2');heading.textContent=items.find(([id])=>id===selected)[1];
  content.append(heading);
- if(['현무몬 던전','주작몬 던전'].includes(name)&&!['map','pit'].includes(selected)){
+ if(name==='현무몬 던전'&&(selected==='map'||selected==='pit')){
+  const isMap=selected==='map';
+  if(isMap)heading.textContent='현무몬 던전 지도';
+  const figure=document.createElement('figure');
+  figure.style.cssText='margin:18px auto 0;max-width:760px';
+  const link=document.createElement('a');
+  link.href=isMap?'assets/xuanwumon/dungeon-map.jpg':'assets/xuanwumon/pit-card-annotated.svg';
+  link.target='_blank';
+  link.rel='noopener';
+  link.setAttribute('aria-label',isMap?'현무몬 던전 지도 원본 보기':'현무몬 던전 PIT카드 원본 보기');
+  const image=document.createElement('img');
+  image.src=link.href;
+  image.alt=isMap?'현무몬 던전 지도와 디지몬 배치':'현무몬 던전 PIT카드 배열. 남은 갯수 20개. 왼쪽 위 12개 문양 아래에 숫자와 이동 순서 표시.';
+  image.width=isMap?1913:788;
+  image.height=isMap?1311:446;
+  image.style.cssText='display:block;width:100%;height:auto;border-radius:8px';
+  link.append(image);
+  const caption=document.createElement('figcaption');
+  caption.className='wbnote';
+  caption.textContent=isMap?'지도를 누르면 원본 크기로 볼 수 있습니다.':'이미지를 누르면 원본 크기로 볼 수 있습니다.';
+  figure.append(link,caption);
+  if(isMap){
+   content.append(figure);
+  }else{
+   const stack=document.createElement('div');
+   stack.className='pit-content-stack pit-explained';
+   figure.style.margin='0';
+   figure.style.width='100%';
+   const explanation=document.createElement('section');
+   explanation.className='pit-explanation';
+   const title=document.createElement('h3');
+   title.textContent='PIT카드 공략';
+   const pattern=document.createElement('p');
+   pattern.textContent='왼쪽 위에 보이는 문양과 똑같이 넣어야 합니다.';
+   const hint=document.createElement('p');
+   hint.textContent='오답이면 화살표가 정답 방향을 알려줍니다.';
+   const direction=document.createElement('p');
+   direction.textContent='1번에서 화살표가 나오면, 화살표가 가리키는 방향의 2번으로 가면 됩니다.';
+   const portraitFrame=document.createElement('figure');
+   portraitFrame.className='pit-skull';
+   const portrait=document.createElement('img');
+   portrait.src='assets/xuanwumon/pit-digimon.png';
+   portrait.alt='마린데빌몬';
+   portrait.width=394;
+   portrait.height=303;
+   const portraitCaption=document.createElement('figcaption');
+   portraitCaption.textContent='마린데빌몬을 잡으면 몇 번째 칸인지 정답을 알려줘요!';
+   portraitFrame.append(portrait,portraitCaption);
+   explanation.append(title,pattern,hint,direction,portraitFrame);
+   stack.append(figure,explanation);
+   content.append(stack);
+  }
+ }else if(['현무몬 던전','주작몬 던전'].includes(name)&&!['map','pit'].includes(selected)){
   const guide=document.createElement('div');guide.className='sindramon-guide';
   const image=document.createElement('img');image.src='assets/'+(name==='현무몬 던전'?'xuanwumon':'zhuqiaomon')+'/'+selected+'.png';image.alt=heading.textContent;image.width=394;image.height=303;image.style.cssText='height:auto;aspect-ratio:auto;object-fit:contain';
   const tactics=document.createElement('section');tactics.className='sindramon-tactics';
   const title=document.createElement('h3');title.textContent=heading.textContent+' 공략';
-  const note=document.createElement('p');note.className='wbnote';note.textContent='공략 내용 등록 전';tactics.append(title,note);guide.append(image,tactics);content.append(guide);
+  tactics.append(title);
+  const xuanwuPatterns={
+   vikaralamon:[
+    ['구륜 패턴','적색구륜 – 비가라몬의 공격이 강하게 들어옵니다.','녹색구륜 – 상처를 치유합니다.','파란구륜 – 상대의 행동을 방해합니다.'],
+    ['바람의 보호 가능']
+   ],
+   vajramon:[
+    ['패턴','반격 – 공격받은 데미지를 반사합니다.','단단해지기 – 공격을 받을수록 방어력이 상승합니다.','강력한 공격 – 바지라몬의 데미지가 상승합니다.'],
+    ['바람의 보호 가능']
+   ],
+   arbormon:[
+    ['패턴','속성 공격 추가 데미지'],
+    ['카드 세팅','홀세 · 특카']
+   ],
+   xuanwumon:[
+    ['패턴',
+     ['적색 -','현무몬이 분노하며 붉은색으로 빛나기 시작합니다.\n즉사 패턴은 적색기운 카드를 사용하면 잠시 사라집니다.'],
+     ['녹색 -','상처를 회복하기 위해서 녹색으로 빛나기 시작합니다.\n회복 패턴은 녹색기운 카드를 사용하면 잠시 사라집니다.'],
+     '데미지 감소 – 현무몬의 방어력이 높아져 받는 데미지가 감소합니다.',
+     '체력 30%부터 몬스터 세 마리 중 하나를 소환합니다. 소환 몬스터 제거 전까지 데미지 1만 받음.'
+    ],
+    ['바람의 보호 · 예감 가능']
+   ]
+  };
+  if(name==='현무몬 던전'&&selected==='kumbhiramon'){
+   const strategy=document.createElement('div');strategy.className='sindramon-warning boss-pattern';
+   [['4번째 공격에 회피를 합니다.','3공 1회피. 회피턴에는 도발 공격 나가면 됩니다.'],['회피 턴에 특수카드로 공격 가능 합니다.','특수카드 공격 가능']].forEach(([label,detail],index)=>{const strong=document.createElement('strong');strong.textContent=label;if(index)strong.style.marginTop='18px';const line=document.createElement('p');line.textContent=detail;strategy.append(strong,line);});
+   const windWarning=document.createElement('div');
+   windWarning.className='sindramon-warning boss-pattern';
+   const windTitle=document.createElement('strong');
+   windTitle.textContent='바람의 보호 안통해요.';
+   const windDetail=document.createElement('p');
+   windDetail.textContent='근거리 전체기 보유';
+   windWarning.append(windTitle,windDetail);
+   const reward=document.createElement('div');reward.className='sindramon-warning boss-pattern';const rewardText=document.createElement('strong');rewardText.textContent='잡으면 적색기운, 녹색기운 카드 획득 합니다.';reward.append(rewardText);tactics.append(strategy,windWarning,reward);
+  }else if(name==='현무몬 던전'&&xuanwuPatterns[selected]){
+   for(const [label,...details] of xuanwuPatterns[selected]){
+    const block=document.createElement('div');
+    block.className='sindramon-warning boss-pattern';
+    const strong=document.createElement('strong');
+    strong.textContent=label;
+    block.append(strong);
+    for(const detail of details){
+     const line=document.createElement('p');
+     if(Array.isArray(detail)){
+      const [prefix,description]=detail;
+      line.style.cssText='display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:.4em';
+      const prefixText=document.createElement('span');
+      prefixText.textContent=prefix;
+      const descriptionText=document.createElement('span');
+      descriptionText.style.whiteSpace='pre-line';
+      descriptionText.textContent=description;
+      line.append(prefixText,descriptionText);
+     }else{
+      line.textContent=detail;
+     }
+     block.append(line);
+    }
+    tactics.append(block);
+   }
+  }else{const note=document.createElement('p');note.className='wbnote';note.textContent='공략 내용 등록 전';tactics.append(note);}
+  guide.append(image,tactics);content.append(guide);
  }else{const note=document.createElement('p');note.className='wbnote';note.textContent=heading.textContent+' 내용 등록 전';content.append(note);}
  layout.append(nav,content);panel.append(layout);
  history.replaceState(null,'','#'+reviewRoutes[name]+'?tab=1&section='+selected);
@@ -165,7 +348,15 @@ function renderDarkGuide(section='map',floor){
  document.querySelector('#reviewPanel').innerHTML=`<div class="dark-guide-layout ${selected==='map'?'dark-map-only':''}"><nav class="dark-guide-menu" aria-label="암흑던전 지도 및 공략">${[['map','지도'],['guide','공략']].map(([id,label])=>`<button type="button" class="${id===selected?'selected':''}" aria-pressed="${id===selected}" onclick="renderDarkGuide('${id}',${floor})">${label}</button>`).join('')}</nav>${selected==='guide'?`<div class="dark-floor-pager" role="group" aria-label="공략 층 이동"><button type="button" onclick="renderDarkGuide('guide',${floor-1})" ${floor===1?'disabled':''}>이전층</button><strong aria-live="polite">${floor===31?'건우방':floor+'층'}</strong><button type="button" onclick="renderDarkGuide('guide',${floor+1})" ${floor===31?'disabled':''}>다음층</button></div>`:''}${selected==='guide'?`<nav class="dark-floor-menu" aria-label="암흑던전 층 선택">${Array.from({length:31},(_,i)=>i+1).map(n=>`<button type="button" class="${n===floor?'selected':''}" aria-pressed="${n===floor}" onclick="renderDarkGuide('${selected}',${n})">${n===31?'건우방':n+'층'}</button>`).join('')}</nav>`:''}<section class="dark-floor-content" aria-label="${selected==='map'?'지도':(floor===31?'건우방':floor+'층')+' 공략'}"><h2>${selected==='map'?'지도':(floor===31?'건우방':floor+'층')+' · 공략'}</h2>${selected==='map'?'<a href="assets/dark-dungeon-characters.webp" target="_blank" rel="noopener" aria-label="암흑던전 지도 원본 보기"><img src="assets/dark-dungeon-characters.webp" alt="암흑던전 전체 지도" width="5924" height="6000" style="display:block;width:100%;max-width:704px;height:auto;margin:0 auto;border-radius:6px"></a>':floorGuide&&floorGuide.phases?renderPhasedEncounter():`<div class="${floorRestriction||floorName||floor===25||floor===30?'dark-floor-encounter':''}"><div class="dark-floor-images ${floor===31?'dark-gunwoo-images':''}">${(floorImages[floor]||[]).map((src,i)=>`<a href="${src}" target="_blank" rel="noopener" aria-label="${floorLabel} 이미지 ${i+1} 원본 보기"><img src="${src}" alt="${floorLabel} 이미지 ${i+1}" style="display:block;width:auto;max-width:100%;height:auto;max-height:320px;object-fit:contain"></a>`).join('')}</div>${floorRestriction||floorName?`<article class="dark-floor-description">${floorRestriction?`<p class="dark-floor-warning"><strong>${floorRestriction}</strong>${floorRestrictionEnding?' <span>(풀리는 구간)</span>':''}</p>`:''}${floorName?`<h3>${floorName.replace(/&/g,'&amp;')}</h3>`:''}${floorGuide&&floor>=21?renderUpperFloorGuide(floorGuide):floorGuide?`<div class="dark-floor-stats"><p><strong>속성 :</strong> ${guideText(floorGuide.attribute)}</p><p><strong>공격 모션 :</strong> ${guideText(floorGuide.attack)}</p><p><strong>딜러 :</strong> ${guideText(floorGuide.dealer)} / <strong>도발 :</strong> ${guideText(floorGuide.taunt)}</p></div>${floorGuide.notes.length?`<div class="dark-floor-notes">${[5,15,19].includes(floor)?`<p class="dark-floor-note-lines"><span>${floorGuide.notes.map(note=>guideText(note)).join('<br>')}</span></p>`:floorGuide.notes.map(note=>`<p>${guideText(note)}</p>`).join('')}</div>`:''}`:''}</article>`:''}</div>${floorImages[floor]?'':'<p class="wbnote">이미지 등록 전</p>'}`}</section></div>`;
  history.replaceState(null,'','#dark-hard?tab=1&section='+selected+(selected==='guide'?'&floor='+floor:''));
 }
-function renderDungeonInfo(name,section){const d=dungeonInfo[name];if(!d||!['입장조건','드랍템','보상','이용 방법'].includes(section))return;const panel=document.querySelector('#reviewPanel');panel.replaceChildren();const title=document.createElement('h2');title.textContent=section;panel.append(title);const intro=document.createElement('p');intro.className='wbnote';intro.textContent='일부 조건과 보상은 추가 확인이 필요합니다.';if(name!=='미궁 HARD')panel.append(intro);const grid=document.createElement('div');grid.className='reviewfields';const entry=section==='입장조건'||section==='이용 방법';if(name==='미궁 HARD'&&!entry)grid.style.gridTemplateColumns='1fr';const rows=entry?dungeonEntryRows(d.entry):d.drops;const missing=entry||rows.length?[]:['전체 드랍 목록'];[...rows,...missing.map(k=>[k,'확인 필요'])].forEach(([label,value])=>{const article=document.createElement('article');article.className='reviewfield';const h=document.createElement('strong');h.textContent=label;const p=document.createElement('p');p.textContent=value;p.style.whiteSpace='pre-line';article.append(h,p);grid.append(article)});panel.append(grid);}
+function renderDungeonInfo(name,section){
+ const d=dungeonInfo[name];
+ if(name==='언더포레스트'&&section==='재료'){
+  const materials=document.querySelector('#reviewPanel .reviewfield p');
+  materials.textContent=d.entry['입장 재료 · 비용'];
+  materials.style.whiteSpace='pre-line';
+  return;
+ }
+ if(!d||!['입장조건','드랍템','보상','이용 방법'].includes(section))return;const panel=document.querySelector('#reviewPanel');panel.replaceChildren();const title=document.createElement('h2');title.textContent=section;panel.append(title);const intro=document.createElement('p');intro.className='wbnote';intro.textContent='일부 조건과 보상은 추가 확인이 필요합니다.';if(name!=='미궁 HARD')panel.append(intro);const grid=document.createElement('div');grid.className='reviewfields';const entry=section==='입장조건'||section==='이용 방법';if(name==='미궁 HARD'&&!entry)grid.style.gridTemplateColumns='1fr';const rows=entry?dungeonEntryRows(d.entry):d.drops;const missing=entry||rows.length?[]:['전체 드랍 목록'];[...rows,...missing.map(k=>[k,'확인 필요'])].forEach(([label,value])=>{const article=document.createElement('article');article.className='reviewfield';const h=document.createElement('strong');h.textContent=label;const p=document.createElement('p');p.textContent=value;p.style.whiteSpace='pre-line';article.append(h,p);grid.append(article)});panel.append(grid);}
 const overwriteData={"common": "최초 1회 필수 재료: 차원 파편 999개 · 송곳산에서 획득\n\n특수 변환 · Data - Digimon\n1억 비트 + Over Storage + 정확히 130레벨 디지몬 (130레벨 초과 불가)\n대상: 워그레이몬, 메탈가루몬, 오파니몬, 바이킹몬, 페닉스몬, 세라피몬, 로제몬, 헤라클레스캅테리몬\n\n일반 변환 · Data - 명시된 디지몬\n1억 비트 + Over Storage + 명시된 130레벨 이상 디지몬 (130레벨 초과 가능)", "entries": [{"name": "간쿠몬X", "key": "히누카무이", "source": "골드코인", "data": ["엑자몬", "제스몬(특푁)", "반쵸레오몬", "Digimon"], "note": "", "body": "간쿠몬X · 오버라이트\n대상 디지몬: 130레벨 이상\n\nKey - 히누카무이\n획득처: 골드코인\n\n필요 Data\n• Data - 엑자몬\n• Data - 제스몬(특푁)\n• Data - 반쵸레오몬\n• Data - Digimon"}, {"name": "두프트몬X", "key": "브라운디지조이드", "source": "골드코인", "data": ["크레니엄몬", "듀나스몬", "로드나이트몬", "Digimon"], "note": "", "body": "두프트몬X · 오버라이트\n대상 디지몬: 130레벨 이상\n\nKey - 브라운디지조이드\n획득처: 골드코인\n\n필요 Data\n• Data - 크레니엄몬\n• Data - 듀나스몬\n• Data - 로드나이트몬\n• Data - Digimon"}, {"name": "듀나스몬X", "key": "블루디지조이드", "source": "골드코인", "data": ["매그너몬(궁극체)(특푁, 빛기캡)", "두프트몬", "간쿠몬", "Digimon"], "note": "", "body": "듀나스몬X · 오버라이트\n대상 디지몬: 130레벨 이상\n\nKey - 블루디지조이드\n획득처: 골드코인\n\n필요 Data\n• Data - 매그너몬(궁극체)(특푁, 빛기캡)\n• Data - 두프트몬\n• Data - 간쿠몬\n• Data - Digimon"}, {"name": "듀크몬X", "key": "크롬디지조이드", "source": "적립코인 200개", "data": ["듀크몬X를 제외한 로열나이츠 X항체 Data 12종"], "note": "로열나이츠 데이터 상자(기간 한정 판매) 또는 직접 제작", "body": "듀크몬X · 오버라이트\n대상 디지몬: 130레벨 이상\n\nKey - 크롬디지조이드\n획득처: 적립코인 200개\n\n필요 Data\n• Data - 듀크몬X를 제외한 로열나이츠 X항체 Data 12종\n\n로열나이츠 데이터 상자(기간 한정 판매) 또는 직접 제작"}, {"name": "러스트티라노몬", "key": "창세의 사이보그", "source": "계절코인", "data": ["파워드라몬", "Digimon 4장"], "note": "", "body": "러스트티라노몬 · 오버라이트\n대상 디지몬: 130레벨 이상\n\nKey - 창세의 사이보그\n획득처: 계절코인\n\n필요 Data\n• Data - 파워드라몬\n• Data - Digimon 4장"}, {"name": "마스테몬", "key": "이세계의 군사", "source": "골드코인", "data": ["오파니몬 (블랙가트몬 + 레이디데블몬) (적립코인 125개 + 발바정수 35개)", "오파니몬 (엔젤우몬)", "Digimon"], "note": "주의: 오파니몬은 특수 변환하지 않도록 주의하세요.", "body": "마스테몬 · 오버라이트\n대상 디지몬: 130레벨 이상\n\nKey - 이세계의 군사\n획득처: 골드코인\n\n필요 Data\n• Data - 오파니몬 (블랙가트몬 + 레이디데블몬) (적립코인 125개 + 발바정수 35개)\n• Data - 오파니몬 (엔젤우몬)\n• Data - Digimon\n\n주의: 오파니몬은 특수 변환하지 않도록 주의하세요."}, {"name": "마왕몬X", "key": "분노의 관", "source": "골드코인", "data": ["루체몬폴다운모드(특푁)", "리리스몬", "베르제브몬(특푁)", "리바이어몬", "발바몬(특푁)", "마왕몬(특푁)", "벨페몬 슬립모드", "Digimon"], "note": "", "body": "마왕몬X · 오버라이트\n대상 디지몬: 130레벨 이상\n\nKey - 분노의 관\n획득처: 골드코인\n\n필요 Data\n• Data - 루체몬폴다운모드(특푁)\n• Data - 리리스몬\n• Data - 베르제브몬(특푁)\n• Data - 리바이어몬\n• Data - 발바몬(특푁)\n• Data - 마왕몬(특푁)\n• Data - 벨페몬 슬립모드\n• Data - Digimon"}, {"name": "매그너몬X", "key": "골드디지조이드", "source": "골드코인", "data": ["알포스브이드라몬(특푁)", "슬레이프몬(특푁)", "제스몬(특푁)", "Digimon"], "note": "", "body": "매그너몬X · 오버라이트\n대상 디지몬: 130레벨 이상\n\nKey - 골드디지조이드\n획득처: 골드코인\n\n필요 Data\n• Data - 알포스브이드라몬(특푁)\n• Data - 슬레이프몬(특푁)\n• Data - 제스몬(특푁)\n• Data - Digimon"}, {"name": "메기드라몬X", "key": "메기도", "source": "골드코인", "data": ["홀리드라몬 (완전체가 레이디데블몬일 경우 제작 불가)", "청룡몬 (완전체가 엔젤우몬일 경우 제작 불가)", "슬레이어드라몬", "Digimon"], "note": "주의: 홀리드라몬·청룡몬의 완전체 조건을 확인하세요.", "body": "메기드라몬X · 오버라이트\n대상 디지몬: 130레벨 이상\n\nKey - 메기도\n획득처: 골드코인\n\n필요 Data\n• Data - 홀리드라몬 (완전체가 레이디데블몬일 경우 제작 불가)\n• Data - 청룡몬 (완전체가 엔젤우몬일 경우 제작 불가)\n• Data - 슬레이어드라몬\n• Data - Digimon\n\n주의: 홀리드라몬·청룡몬의 완전체 조건을 확인하세요."}, {"name": "미네르바몬X", "key": "헌티드 필루스", "source": "계절코인", "data": ["메르바몬", "Digimon"], "note": "", "body": "미네르바몬X · 오버라이트\n대상 디지몬: 130레벨 이상\n\nKey - 헌티드 필루스\n획득처: 계절코인\n\n필요 Data\n• Data - 메르바몬\n• Data - Digimon"}, {"name": "알파몬 왕룡검", "key": "알파", "source": "적립코인 200개", "data": ["알파몬 왕룡검을 제외한 로열나이츠 X항체 Data 12종"], "note": "로열나이츠 데이터 상자(기간 한정 판매) 또는 직접 제작", "body": "알파몬 왕룡검 · 오버라이트\n대상 디지몬: 130레벨 이상\n\nKey - 알파\n획득처: 적립코인 200개\n\n필요 Data\n• Data - 알파몬 왕룡검을 제외한 로열나이츠 X항체 Data 12종\n\n로열나이츠 데이터 상자(기간 한정 판매) 또는 직접 제작"}, {"name": "알포스브이드라몬X", "key": "알포스", "source": "골드코인", "data": ["알파몬(특푁)", "오메가몬", "듀크몬(특푁)"], "note": "", "body": "알포스브이드라몬X · 오버라이트\n대상 디지몬: 130레벨 이상\n\nKey - 알포스\n획득처: 골드코인\n\n필요 Data\n• Data - 알파몬(특푁)\n• Data - 오메가몬\n• Data - 듀크몬(특푁)"}, {"name": "엑자몬X", "key": "용제", "source": "적립코인", "data": ["엑자몬X를 제외한 로열나이츠 X항체 Data 12종"], "note": "로열나이츠 데이터 상자(기간 한정 판매) 또는 직접 제작\n용제 Key의 적립코인 수량은 제공 자료에 명시되어 있지 않습니다.", "body": "엑자몬X · 오버라이트\n대상 디지몬: 130레벨 이상\n\nKey - 용제\n획득처: 적립코인\n\n필요 Data\n• Data - 엑자몬X를 제외한 로열나이츠 X항체 Data 12종\n\n로열나이츠 데이터 상자(기간 한정 판매) 또는 직접 제작\n용제 Key의 적립코인 수량은 제공 자료에 명시되어 있지 않습니다."}, {"name": "오메가몬 알터B", "key": "느와르", "source": "계절코인", "data": ["블리츠 그레이몬", "크레스가루몬", "Digimon 2장"], "note": "", "body": "오메가몬 알터B · 오버라이트\n대상 디지몬: 130레벨 이상\n\nKey - 느와르\n획득처: 계절코인\n\n필요 Data\n• Data - 블리츠 그레이몬\n• Data - 크레스가루몬\n• Data - Digimon 2장"}, {"name": "오메가몬 즈왈트D", "key": "광폭의 집행자", "source": "골드코인", "data": ["오메가몬 즈왈트D 1단 (적립코인 150개)", "오메가몬 즈왈트D 2단 (적립코인 250개)", "Digimon"], "note": "", "body": "오메가몬 즈왈트D · 오버라이트\n대상 디지몬: 130레벨 이상\n\nKey - 광폭의 집행자\n획득처: 골드코인\n\n필요 Data\n• Data - 오메가몬 즈왈트D 1단 (적립코인 150개)\n• Data - 오메가몬 즈왈트D 2단 (적립코인 250개)\n• Data - Digimon"}, {"name": "오메가몬X", "key": "오메가X", "source": "적립코인 200개", "data": ["오메가몬X를 제외한 로열나이츠 X항체 Data 12종"], "note": "로열나이츠 데이터 상자(기간 한정 판매) 또는 직접 제작", "body": "오메가몬X · 오버라이트\n대상 디지몬: 130레벨 이상\n\nKey - 오메가X\n획득처: 적립코인 200개\n\n필요 Data\n• Data - 오메가몬X를 제외한 로열나이츠 X항체 Data 12종\n\n로열나이츠 데이터 상자(기간 한정 판매) 또는 직접 제작"}, {"name": "지드밀레니엄몬", "key": "종말의 천년마수", "source": "계절코인", "data": ["키메라몬 2장", "Digimon 2장"], "note": "", "body": "지드밀레니엄몬 · 오버라이트\n대상 디지몬: 130레벨 이상\n\nKey - 종말의 천년마수\n획득처: 계절코인\n\n필요 Data\n• Data - 키메라몬 2장\n• Data - Digimon 2장"}, {"name": "카오스드라몬X", "key": "레드디지조이드", "source": "골드코인", "data": ["메이크랙몬비셔스모드 (궁극체가 오파니몬일 경우만 가능)", "카오스드라몬", "슬레이프몬(특푁)", "Digimon"], "note": "주의: 메이크랙몬비셔스모드는 궁극체가 오파니몬인 경우만 가능합니다.", "body": "카오스드라몬X · 오버라이트\n대상 디지몬: 130레벨 이상\n\nKey - 레드디지조이드\n획득처: 골드코인\n\n필요 Data\n• Data - 메이크랙몬비셔스모드 (궁극체가 오파니몬일 경우만 가능)\n• Data - 카오스드라몬\n• Data - 슬레이프몬(특푁)\n• Data - Digimon\n\n주의: 메이크랙몬비셔스모드는 궁극체가 오파니몬인 경우만 가능합니다."}]};
 let overwriteChosen='';
 function renderOverwrite(){const panel=document.querySelector('#reviewPanel');panel.replaceChildren();const head=document.createElement('h2');head.textContent='오버라이트 재료';panel.append(head);const controls=document.createElement('div');controls.className='watercontrols';const search=document.createElement('input');search.type='search';search.placeholder='디지몬 이름 검색';search.setAttribute('aria-label','오버라이트 디지몬 검색');const select=document.createElement('select');select.setAttribute('aria-label','오버라이트 대상 디지몬');controls.append(search,select);panel.append(controls);const detail=document.createElement('div');detail.className='overwrite-detail';panel.append(detail);const draw=()=>{const e=overwriteData.entries.find(e=>e.name===select.value);detail.replaceChildren();if(!e){detail.textContent='해당하는 디지몬이 없습니다.';return}overwriteChosen=e.name;const h=document.createElement('h3');h.textContent=e.name;detail.append(h);const lv=document.createElement('p');lv.textContent='대상 디지몬: 130레벨 이상';detail.append(lv);const grid=document.createElement('div');grid.className='reviewfields';for(const [label,value]of [['Key',e.key],['Key 획득처',e.source]]){const a=document.createElement('article');a.className='reviewfield';const h=document.createElement('strong');h.textContent=label;const p=document.createElement('p');p.textContent=value;a.append(h,p);grid.append(a)}detail.append(grid);const title=document.createElement('h3');title.textContent='필요 Data';detail.append(title);const list=document.createElement('ul');e.data.forEach(value=>{const li=document.createElement('li');li.textContent='Data - '+value;list.append(li)});detail.append(list);if(e.note){const note=document.createElement('p');note.className='caution';note.textContent=e.note;detail.append(note)}};const fill=()=>{const entries=overwriteData.entries.filter(e=>e.name.toLowerCase().includes(search.value.trim().toLowerCase()));select.replaceChildren();entries.forEach(e=>{const o=document.createElement('option');o.value=e.name;o.textContent=e.name;select.append(o)});if(entries.some(e=>e.name===overwriteChosen))select.value=overwriteChosen;draw()};search.oninput=fill;select.onchange=draw;fill();const commonTitle=document.createElement('h3');commonTitle.textContent='공통 재료 · Data 변환';const common=document.createElement('p');common.style.whiteSpace='pre-line';common.textContent=overwriteData.common;panel.append(commonTitle,common);history.replaceState(null,'','#overwrite');}

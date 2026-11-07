@@ -254,21 +254,21 @@
   {
     "id": "accessory-obsidian-earring",
     "name": "옵시디언디지조이드 귀걸이",
-    "score": 400,
+    "score": 300,
     "category": "earring",
     "maxCount": 1
   },
   {
     "id": "accessory-choi-necklace",
     "name": "최영재의 목걸이",
-    "score": 400,
+    "score": 300,
     "category": "necklace",
     "maxCount": 1
   },
   {
     "id": "accessory-nibelungen-ring",
     "name": "니벨룽겐의 반지",
-    "score": 400,
+    "score": 300,
     "category": "ring",
     "maxCount": 1
   },
