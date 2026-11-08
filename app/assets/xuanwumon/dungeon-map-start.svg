@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1913" height="1311" viewBox="0 0 1913 1311">
+  <title>현무몬 던전 지도</title>
+  <desc>아래쪽 왼편 포털 아래에 START 표시가 있습니다.</desc>
+  <defs>
+    <clipPath id="start-sign"><path d="M188 856L193 852H300L301 856L298 878L294 880H188Z"/></clipPath>
+  </defs>
+  <image width="1913" height="1311" href="dungeon-map.jpg"/>
+  <svg x="873" y="1110" width="144" height="38" viewBox="187 851 115 30">
+    <image width="1508" height="1043" clip-path="url(#start-sign)" href="../baihumon-map-updated.webp"/>
+  </svg>
+</svg>

@@ -12,6 +12,14 @@ nav a[data-home]{display:block;text-decoration:none;text-align:left;color:#bac7d
 .emblem-enhancement .wbtable tbody th{color:var(--gold);white-space:nowrap;border-bottom:1px solid var(--line)}
 .emblem-enhancement .wbtable td{white-space:pre-line;line-height:1.65;padding:10px 14px;vertical-align:top}
 .emblem-enhancement .wbtable td:last-child{color:var(--text);font-weight:normal}
+.piedmon-effects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
+.piedmon-effects h3{margin:0;color:var(--gold)}
+.piedmon-effects .wbtablewrap{margin-top:10px}
+.piedmon-effects .wbtable{min-width:0}
+.piedmon-effects .wbtable th,.piedmon-effects .wbtable td{padding:8px 12px}
+.piedmon-effects .wbtable tbody th{width:1%;white-space:nowrap;vertical-align:top;color:var(--gold);border-bottom:1px solid var(--line)}
+.piedmon-effects .wbtable td{color:var(--text);font-weight:normal;line-height:1.65;white-space:pre-line}
+@media(max-width:1050px){.piedmon-effects{grid-template-columns:minmax(0,1fr)}}
 </style></head><body><aside><div class="brand">SeonDeng</div><div class="english">DIGIMON RPG GUIDE</div><nav id="nav"><a class="active" data-home href="index.html"><span class="navicon">⌂</span>홈</a><button data-name="오버레이"><span class="navicon">▣</span>오버레이</button><div class="group">게임 정보</div><button data-name="월드버프"><span class="navicon">◉</span>월드버프</button><div class="group">던전 가이드</div><button data-name="미궁 HARD"><span class="navicon">◇</span>미궁 HARD</button><button data-name="로얄 베이스"><span class="navicon">◇</span>로얄 베이스</button><button data-name="워터스페이스"><span class="navicon">◇</span>워터스페이스</button><button data-name="암흑던전 HARD"><span class="navicon">◇</span>암흑던전 HARD</button><button data-name="현무몬 던전"><span class="navicon">◇</span>현무몬 던전</button><button data-name="백호몬 던전"><span class="navicon">◇</span>백호몬 던전</button><button data-name="주작몬 던전"><span class="navicon">◇</span>주작몬 던전</button><button data-name="청룡몬 던전"><span class="navicon">◇</span>청룡몬 던전 <small class="devlabel">(미개발)</small></button><button data-name="송곳산 던전"><span class="navicon">◇</span>송곳산 던전</button><button data-name="지하통로 HARD"><span class="navicon">◇</span>지하통로 HARD <small class="devlabel">(길드 용)</small></button><button data-name="언더포레스트"><span class="navicon">◇</span>언더포레스트</button><button data-name="헬즈필드"><span class="navicon">◇</span>헬즈필드</button><button data-name="숲속의 천사성"><span class="navicon">◇</span>숲속의 천사성 <small class="devlabel">(개발 중)</small></button><button data-name="퀴즈"><span class="navicon">?</span>퀴즈 <small class="devlabel">(길드 용)</small></button><button data-name="무한산"><span class="navicon">◇</span>무한산</button><div class="group">성장 도구</div><button data-name="오버라이트"><span class="navicon">⬡</span>오버라이트</button><button data-name="특성 확률"><span class="navicon">%</span>특성 확률</button><button data-name="장비점수 계산기"><span class="navicon">▤</span>장비점수 계산기</button><button data-name="문장강화"><span class="navicon">✦</span>문장강화</button><button data-name="보옥 강화"><span class="navicon">◆</span>보옥 강화</button></nav><div class="asidefoot">제작자 선댕<br>검토용 · 전체 메뉴</div></aside><main id="homePage"><header class="buffbar"><div class="buffheading"><span class="eyebrow">오늘의 월드버프</span><strong id="buffDay">10월 13일 · 초목의 마수의 날</strong></div><div class="bufflist" id="buffList"><span>데이터 <b>+10%</b></span><span>나무속성 <b>+20%</b></span><span>마수형 <b>+40%</b></span></div><a class="buffsource" href="https://digimonrpg.com/pages/Notice/Update_view?idx=1491" target="_blank" rel="noopener">출처 공지 ↗</a></header><section class="hero"><div class="herotext"><span class="pill">DIGIMON RPG</span><h2>디지몬 RPG</h2><p>던전 공략부터 성장에 필요한 정보까지.<br>찾고 싶은 정보를 한곳에서 확인하세요.</p></div></section><section><div class="sectiontitle"><h2>던전 바로가기</h2><label class="search">⌕<input id="search" placeholder="던전 이름으로 찾기" aria-label="던전 검색"></label></div><div class="cards" id="cards"></div><p class="empty" id="empty">일치하는 던전이 없습니다.</p></section><section style="margin-top:30px"><div class="sectiontitle"><h2>성장 도구</h2><span>더 강해지기 위한 준비</span></div><div class="tools"><button data-name="오버라이트"><span class="toolicon">⬡</span><div><strong>오버라이트</strong><small>디지몬별 필요 재료</small></div></button><button data-name="특성 확률"><span class="toolicon">%</span><div><strong>특성 확률</strong><small>지능과 장비 효과 확인</small></div></button><button data-name="문장강화"><span class="toolicon">✦</span><div><strong>문장강화</strong><small>단계별 능력치와 강화 재료</small></div></button><button data-name="보옥 강화"><span class="toolicon">◆</span><div><strong>보옥 강화</strong><small>단계별 강화 재료와 비용</small></div></button></div></section><footer><span>선댕의 디지몬 RPG 길잡이</span><span>검토용 · 전체 메뉴 · 제작자 선댕</span><button type="button" id="appUpdateCheck" style="background:transparent;color:inherit;border:1px solid #354159;border-radius:5px;padding:6px 9px;cursor:pointer">업데이트 확인</button></footer></main><main id="worldPage" class="wb" hidden><div class="wbhead"><div><div class="eyebrow">WORLD BUFF</div><h1>월드버프</h1><p>날짜별 버프와 적용되는 디지몬을 확인하세요.</p></div></div><div class="wbcontrols"><button id="wbPrev" aria-label="이전 날짜">←</button><input type="date" id="wbDate" aria-label="버프 조회 날짜"><button id="wbNext" aria-label="다음 날짜">→</button><button id="wbToday">오늘</button><span class="wbnote">한국 시간 · 오전 6시 기준</span></div><h2 id="wbDayTitle"></h2><div class="wbcards" id="wbCards"></div><p class="wbnote" id="wbStatus"></p><p class="wbnote" id="wbSyncStatus" role="status">공식 공지 확인 대기 중</p><button type="button" class="wbback" id="wbSyncNow">공지 다시 확인</button><div class="sectiontitle" style="margin-top:36px"><h2>버프 적용 디지몬 <span id="wbCount"></span></h2><label class="search">⌕<input id="wbSearch" placeholder="디지몬 이름 검색" aria-label="디지몬 이름 검색"></label></div><p class="wbnote">기존 길잡이에 등록된 디지몬 기준입니다. 증가율은 해당 조건의 단순 합산이며, 최종 전투 데미지 계산값이 아닙니다.</p><div class="wbtablewrap"><table class="wbtable"><thead><tr><th>디지몬</th><th>속성</th><th>자연 속성</th><th>유형</th><th>버프 합계</th></tr></thead><tbody id="wbRows"></tbody></table><div id="wbEmpty" class="wbempty" hidden>해당 조건에 맞는 디지몬이 없습니다.</div></div></main><main id="dungeonPage" hidden><div class="eyebrow">DUNGEON GUIDE · 검토본</div><h1 id="dungeonTitle"></h1><div id="dungeonHero" class="reviewhero" hidden></div><div class="reviewtabs" id="dungeonInfoTabs"></div><div class="dungeonlayout"><nav id="floorTabs" class="wbcontrols" aria-label="층 선택"></nav><section id="floorBody" class="floorpanel"></section></div></main><main id="reviewPage" hidden><div class="eyebrow" id="reviewCategory">DUNGEON GUIDE</div><h1 id="reviewTitle"></h1><p class="wbnote">내용을 채워갈 상세 화면입니다. 항목별로 수정할 내용을 알려주세요.</p><div id="reviewHero" class="reviewhero" hidden></div><div class="reviewtabs" id="reviewTabs" role="tablist" aria-label="상세 항목"></div><section class="floorpanel" id="reviewPanel" role="tabpanel"></section></main><dialog id="detail"><h2 id="modalTitle"></h2><p>이 메뉴의 상세 화면은 메인 구성을 검토한 뒤 연결할 예정이에요.</p><p>지금은 메뉴 이름과 순서, 카드 크기, 화면 배치를 확인해 주세요.</p><form method="dialog"><button>확인</button></form></dialog><script src="equipment-score.js"></script><script src="emblem-enhancement.js"></script><script src="overlay-ui.js?v=public-draft-growth-1"></script><script src="world-buff.js?v=45"></script><script src="water-guide.js?v=20261019-b1-numbered"></script><script>
 const publicLockedNames=new Set(["퀴즈", "지하통로 HARD"]);
 document.addEventListener('DOMContentLoaded',()=>{const b=document.getElementById('appUpdateCheck');if(b)b.onclick=()=>window.chrome?.webview?.postMessage('app-update-check')});
@@ -94,31 +102,30 @@ const reviewSections={
 '강화 단계':['문장 선택','현재 단계','목표 단계'],
 '강화 재료':['필요 재료','강화 비용'],
 '강화 정보':['단계별 효과','성공 확률','실패 시 처리']};
-function openReview(name,tab=0){if(names.includes(name)&&tab===(name==='퀴즈'?2:3))tab=0;if(name==='로얄 베이스'&&tab===4){openDungeon(name,3);return;}markMenuViewed(name);if(publicLockedNames.has(name)){showPublicLock(name);return;}if((name==='미궁 HARD'||name==='로얄 베이스')&&(tab===1||tab===2)){openDungeon(name);return;}const waterQuery=new URLSearchParams(location.hash.split('?')[1]||'');if(names.includes(name)&&name!=='퀴즈'&&tab===2)tab=1;if(!reviewRoutes[name])return;document.querySelectorAll('body>main').forEach(el=>el.hidden=el.id!=='reviewPage');document.querySelector('#reviewTitle').textContent=name;const isDungeon=names.includes(name);document.querySelector('#reviewCategory').textContent=isDungeon?'DUNGEON GUIDE':'GROWTH TOOLS';document.querySelectorAll('#nav button,#nav [data-home]').forEach(el=>el.classList.toggle('active',el.dataset.name===name));const tabs=name==='보옥 강화'?['보옥 강화']:name==='문장강화'?['문장강화']:name==='장비점수 계산기'?['장비점수 계산기']:name==='퀴즈'?['입장조건','지도·공략','드랍템','재료']:name==='오버라이트'?['디지몬 선택','필요 재료','진행 방법']:name==='특성 확률'?['지능','아이템 · 효과','결과']:name==='문장강화'?['강화 단계','강화 재료','강화 정보']:['입장조건','지도·공략','공략 방법','드랍템','재료'];if(tab<0||tab>=tabs.length)tab=0;const hero=document.querySelector('#reviewHero');const card=[...document.querySelectorAll('.card')].find(el=>el.dataset.name===name);hero.hidden=!card;if(card){const art=card.querySelector('.art');const cs=getComputedStyle(art);hero.style.backgroundImage=cs.backgroundImage;hero.style.backgroundSize="cover";hero.style.backgroundPosition="center";hero.dataset.dungeon=name;}const nav=document.querySelector('#reviewTabs');nav.hidden=name==='특성 확률'||name==='오버라이트'||name==='장비점수 계산기'||name==='문장강화'||name==='보옥 강화';nav.replaceChildren();const tabOrder=isDungeon?(name==='퀴즈'?[0,1,3,2]:[0,1,4,2,3]):tabs.map((_,i)=>i);tabOrder.forEach(i=>{const label=tabs[i];if(isDungeon&&label==='드랍템')return;if(isDungeon&&name!=='퀴즈'&&i===2)return;const btn=document.createElement('button');btn.textContent=label;btn.className=i===tab?'selected':'';btn.setAttribute('role','tab');btn.setAttribute('aria-selected',String(i===tab));btn.onclick=()=>{if((name==='미궁 HARD'||name==='로얄 베이스')&&(i===1||i===2))openDungeon(name);else openReview(name,i)};nav.append(btn)});const section=tabs[tab];
+function openReview(name,tab=0){if(names.includes(name)&&tab===(name==='퀴즈'?2:3))tab=0;if(name==='로얄 베이스'&&tab===4){openDungeon(name,3);return;}markMenuViewed(name);if(publicLockedNames.has(name)){showPublicLock(name);return;}if((name==='미궁 HARD'||name==='로얄 베이스')&&(tab===1||tab===2)){openDungeon(name);return;}const waterQuery=new URLSearchParams(location.hash.split('?')[1]||'');if(names.includes(name)&&name!=='퀴즈'&&tab===2)tab=1;if(!reviewRoutes[name])return;document.querySelectorAll('body>main').forEach(el=>el.hidden=el.id!=='reviewPage');document.querySelector('#reviewTitle').textContent=name;const isDungeon=names.includes(name);document.querySelector('#reviewCategory').textContent=isDungeon?'DUNGEON GUIDE':'GROWTH TOOLS';document.querySelectorAll('#nav button,#nav [data-home]').forEach(el=>el.classList.toggle('active',el.dataset.name===name));const tabs=name==='보옥 강화'?['보옥 강화']:name==='문장강화'?['문장강화']:name==='장비점수 계산기'?['장비점수 계산기']:name==='퀴즈'?['입장조건','지도·공략','드랍템','재료']:name==='오버라이트'?['디지몬 선택','필요 재료','진행 방법']:name==='특성 확률'?['지능','아이템 · 효과','결과']:name==='문장강화'?['강화 단계','강화 재료','강화 정보']:['입장조건','지도·공략','공략 방법','드랍템','재료'];if(tab<0||tab>=tabs.length)tab=0;const hero=document.querySelector('#reviewHero');const card=[...document.querySelectorAll('.card')].find(el=>el.dataset.name===name);hero.hidden=!card;if(card){const art=card.querySelector('.art');const cs=getComputedStyle(art);hero.style.backgroundImage=cs.backgroundImage;hero.style.backgroundSize="cover";hero.style.backgroundPosition="center";hero.dataset.dungeon=name;}const nav=document.querySelector('#reviewTabs');nav.hidden=name==='특성 확률'||name==='오버라이트'||name==='장비점수 계산기'||name==='문장강화'||name==='보옥 강화';nav.replaceChildren();const tabOrder=isDungeon?(name==='퀴즈'?[0,1,3,2]:[0,1,4,2,3]):tabs.map((_,i)=>i);tabOrder.forEach(i=>{const label=tabs[i];if(isDungeon&&label==='드랍템')return;if(isDungeon&&name!=='퀴즈'&&i===2)return;const btn=document.createElement('button');btn.textContent=name==='송곳산 던전'&&i===1?'공략':label;btn.className=i===tab?'selected':'';btn.setAttribute('role','tab');btn.setAttribute('aria-selected',String(i===tab));btn.onclick=()=>{if((name==='미궁 HARD'||name==='로얄 베이스')&&(i===1||i===2))openDungeon(name);else openReview(name,i)};nav.append(btn)});const section=tabs[tab];
 const useStandardEntryOrder=section==='입장조건'&&['송곳산 던전','언더포레스트','헬즈필드','숲속의 천사성'].includes(name);
 const fields=useStandardEntryOrder?dungeonEntryRows({}).map(([label])=>label):reviewSections[section];
 document.querySelector('#reviewPanel').innerHTML='<h2>'+tabs[tab]+'</h2><div class="reviewfields">'+fields.map(label=>'<article class="reviewfield"><strong>'+label+'</strong><p>내용 등록 전</p></article>').join('')+'</div>';renderDungeonInfo(name,tabs[tab]);if(name==='장비점수 계산기')renderEquipmentScore();if(name==='문장강화')renderEmblemEnhancement();if(name==='보옥 강화')renderJewelEnhancement();history.replaceState(null,'','#'+reviewRoutes[name]+((tab||name==='미궁 HARD'||name==='로얄 베이스')?'?tab='+tab:''));window.scrollTo(0,0);if(name==='워터스페이스'&&(tab===1||tab===2))renderWaterGuide(waterQuery);if(name==='암흑던전 HARD'&&tab===1)renderDarkGuide(waterQuery.get('section'));if(name==='백호몬 던전'&&tab===1)renderBaihumonGuide(waterQuery.get('section'));if(['현무몬 던전','주작몬 던전'].includes(name)&&tab===1)renderBeastGuide(name,waterQuery.get('section'));if(['현무몬 던전','백호몬 던전','주작몬 던전'].includes(name)&&tab===4)renderBeastMaterials(name);if(['송곳산 던전','언더포레스트','숲속의 천사성'].includes(name)&&tab===1)renderSimpleDungeonGuide(name,waterQuery.get('section'));if(name==='특성 확률')renderCombinedTrait();if(name==='오버라이트')renderOverwrite();}
 
 function renderSimpleDungeonGuide(name,section='map'){
- const items=name==='송곳산 던전'?[
-  ['map','지도'],
+ const isSpikeMountain=name==='송곳산 던전';
+ const items=isSpikeMountain?[
   ['piedmon-card','피에몬 카드'],
   ['whamon','고래몬'],
   ['metalseadramon','메탈시드라몬'],
   ['cherrymon','쥬레이몬'],
   ['metaletemon','메탈에테몬'],
-  ['puppetmon','피노키몬'],
-  ['batpuppetmon','배트퍼펫몬'],
+  ['puppetmon','피노키오몬'],
+  ['batpuppetmon','배드퍼펫몬'],
   ['machinedramon','파워드라몬'],
   ['ladydevimon','레이디데블몬'],
   ['piedmon','피에몬'],
   ['apocalymon','아포카리몬']
  ]:[['map','지도'],['guide','공략']];
- const requested=section==='guide'?items[1][0]:section;
- const [selected,selectedLabel]=items.find(([id])=>id===requested)||items[0];
+ const [selected,selectedLabel]=items.find(([id])=>id===section)||items[0];
  const panel=document.querySelector('#reviewPanel');panel.replaceChildren();
  const layout=document.createElement('div');layout.className='baihuguide';
- const nav=document.createElement('nav');nav.className='baihumenu';nav.setAttribute('aria-label',name+' 지도 및 공략');nav.setAttribute('role','tablist');
+ const nav=document.createElement('nav');nav.className='baihumenu';nav.setAttribute('aria-label',name+(isSpikeMountain?' 공략':' 지도 및 공략'));nav.setAttribute('role','tablist');
  const content=document.createElement('section');content.className='baihucontent';content.id='simpleDungeonGuideContent';content.setAttribute('role','tabpanel');
  items.forEach(([id,label],i)=>{
   const button=document.createElement('button');
@@ -144,9 +151,76 @@ function renderSimpleDungeonGuide(name,section='map'){
  });
  content.setAttribute('aria-labelledby','simpleDungeonGuide-'+selected);
  const heading=document.createElement('h2');heading.textContent=selectedLabel;
- const note=document.createElement('p');note.className='wbnote';note.textContent=heading.textContent+' 내용 등록 전';content.append(heading,note);
+ content.append(heading);
+ if(isSpikeMountain&&selected==='piedmon-card'){
+  renderPiedmonCardEffects(content);
+ }else{
+  const note=document.createElement('p');note.className='wbnote';note.textContent=heading.textContent+' 내용 등록 전';
+  if(isSpikeMountain){
+   const guide=document.createElement('div');guide.className='sindramon-guide';
+   const image=document.createElement('img');image.src='assets/spike-mountain/'+selected+'.png';image.alt=selectedLabel;
+   image.width=394;image.height=303;image.style.cssText='height:auto;aspect-ratio:auto;object-fit:contain';
+   guide.append(image,note);content.append(guide);
+  }else{
+   content.append(note);
+  }
+ }
  layout.append(nav,content);panel.append(layout);
  history.replaceState(null,'','#'+reviewRoutes[name]+'?tab=1&section='+selected);
+}
+
+function renderPiedmonCardEffects(content){
+ const tables=[
+  ['버프',[
+   ['능력치 버프',[
+    '힘 +500','힘 +300','민첩 +500','민첩 +300','건강 +500','건강 +300','지능 +500','지능 +300',
+    '힘, 민첩, 건강, 지능 +250','힘, 민첩, 건강, 지능 +150',
+    'HP +2500','VP +2500','공격력 +500','방어력 +500','방어력 +200','공격력 +200',
+    '전투 등급 +2500','전투 등급 +500','특성 발동 확률 +100%','특성 발동 확률 +50%',
+    '전용 특성 발동 확률 +100%','전용 특성 발동 확률 +10%'
+   ]],
+   ['스킬 버프',[
+    'F2 스킬 데미지 +100%','F3 스킬 데미지 +50%',
+    '근거리 스킬 데미지 +75%','원거리 스킬 데미지 +75%',
+    '전체 스킬 데미지 +75%','단일 스킬 데미지 +75%'
+   ]],
+   ['경험치 버프',[
+    '백신 속성 디지몬 공격 시 데미지 +100%','바이러스 속성 디지몬 공격 시 데미지 +100%',
+    '데이터 속성 디지몬 공격 시 데미지 +100%','디지몬 경험치 +2500%','디지몬 경험치 +1000%'
+   ]]
+  ]],
+  ['디버프',[
+   ['능력치 디버프',[
+    '공격력 -15%','방어력 -100','전투 등급 -500','전용 특성 발동 확률 -30%',
+    '특성 발동 확률 -15%\n전용 특성 발동 확률 -15%\n카드 슬래시 횟수 -5',
+    '데미지 -30% ~ +30%','받는 데미지 20% 증가','카드 슬래시 횟수 -7','VP -1500'
+   ]],
+   ['스킬 디버프',['F3 스킬 사용 불가','특성 발동 확률 -30%']]
+  ]]
+ ];
+ const layout=document.createElement('div');layout.className='piedmon-effects';
+ for(const [title,groups] of tables){
+  const section=document.createElement('section');
+  const heading=document.createElement('h3');heading.textContent=title;
+  const wrap=document.createElement('div');wrap.className='wbtablewrap';
+  const table=document.createElement('table');table.className='wbtable';table.setAttribute('aria-label','피에몬 카드 '+title);
+  const header=table.createTHead().insertRow();
+  for(const label of ['분류','효과']){
+   const cell=document.createElement('th');cell.scope='col';cell.textContent=label;header.append(cell);
+  }
+  for(const [category,effects] of groups){
+   const body=table.createTBody();
+   effects.forEach((effect,index)=>{
+    const row=body.insertRow();
+    if(index===0){
+     const cell=document.createElement('th');cell.scope='rowgroup';cell.rowSpan=effects.length;cell.textContent=category;row.append(cell);
+    }
+    row.insertCell().textContent=effect;
+   });
+  }
+  wrap.append(table);section.append(heading,wrap);layout.append(section);
+ }
+ content.append(layout);
 }
 
 function renderBeastMaterials(dungeon){
@@ -171,17 +245,27 @@ function renderBeastGuide(name,section='map'){
   const figure=document.createElement('figure');
   figure.style.cssText='margin:18px auto 0;max-width:760px';
   const link=document.createElement('a');
-  link.href=isMap?'assets/xuanwumon/dungeon-map.jpg':'assets/xuanwumon/pit-card-annotated.svg';
+  link.href=isMap?'assets/xuanwumon/dungeon-map-start.svg':'assets/xuanwumon/pit-card-annotated.svg';
   link.target='_blank';
   link.rel='noopener';
-  link.setAttribute('aria-label',isMap?'현무몬 던전 지도 원본 보기':'현무몬 던전 PIT카드 원본 보기');
-  const image=document.createElement('img');
-  image.src=link.href;
-  image.alt=isMap?'현무몬 던전 지도와 디지몬 배치':'현무몬 던전 PIT카드 배열. 남은 갯수 20개. 왼쪽 위 12개 문양 아래에 숫자와 이동 순서 표시.';
-  image.width=isMap?1913:788;
-  image.height=isMap?1311:446;
-  image.style.cssText='display:block;width:100%;height:auto;border-radius:8px';
-  link.append(image);
+  link.setAttribute('aria-label',isMap?'현무몬 던전 지도 원본 보기. START는 아래쪽 왼편 포털 아래에 있습니다.':'현무몬 던전 PIT카드 원본 보기');
+  if(isMap){
+   const map=document.createElement('object');
+   map.data=link.href;
+   map.type='image/svg+xml';
+   map.setAttribute('aria-hidden','true');
+   map.tabIndex=-1;
+   map.style.cssText='display:block;width:100%;aspect-ratio:1913/1311;border-radius:8px;pointer-events:none';
+   link.append(map);
+  }else{
+   const image=document.createElement('img');
+   image.src=link.href;
+   image.alt='현무몬 던전 PIT카드 배열. 남은 갯수 20개. 왼쪽 위 12개 문양 아래에 숫자와 이동 순서 표시.';
+   image.width=788;
+   image.height=446;
+   image.style.cssText='display:block;width:100%;height:auto;border-radius:8px';
+   link.append(image);
+  }
   const caption=document.createElement('figcaption');
   caption.className='wbnote';
   caption.textContent=isMap?'지도를 누르면 원본 크기로 볼 수 있습니다.':'이미지를 누르면 원본 크기로 볼 수 있습니다.';
@@ -348,7 +432,7 @@ function renderDarkGuide(section='map',floor){
  const floorLabel=floor===31?'건우방':floor+'층';
  const floorNames={"1": "케르베로스몬", "2": "주엘비몬", "3": "스컬맘몬", "4": "크라운몬", "5": "아수라몬", "6": "나이트몬", "7": "볼케몬", "8": "볼트몬", "9": "다이노타이거몬", "10": "키메라몬", "11": "블랙 가트몬", "12": "레이디 데블몬", "13": "가르프몬", "14": "무크스몬", "15": "반쵸 레오몬", "16": "가오몬", "17": "가오가몬", "18": "마하 가오가몬", "19": "미라쥬가오가몬", "20": "미라쥬가오가몬버스트", "21": "마스터티라노몬", "22": "메탈그레이몬X", "23": "마르스몬", "24": "세라피몬&블랙세라피몬", "25": "레베몬", "26": "디아블로몬", "27": "아마게몬", "28": "메르바몬", "29": "아포카리몬", "30": "벨페몬 슬립모드&레이지모드"};
  const floorName=floorNames[floor]||'';
- const floorGuides={"1": {"attribute": "어둠", "attack": "F2 전공(원) / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다."]}, "2": {"attribute": "노멀", "attack": "F2 단공 / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": []}, "3": {"attribute": "노멀", "attack": "F2 전공(근) / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["전공이있지만 바람의보호 발동이 안됩니다."]}, "4": {"attribute": "어둠", "attack": "F2 단공 / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": []}, "5": {"attribute": "불", "attack": "F2 전공(원) / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다.", "자비 1, 4, 7턴 도발 및 시너지가 나가서 자비를 빼야 합니다.", "도발 / 딜 / 딜 / 도발 / 딜 / 딜"]}, "6": {"attribute": "노멀", "attack": "F2 단공 / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": []}, "7": {"attribute": "땅", "attack": "F2 전공(원) / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다."]}, "8": {"attribute": "노멀", "attack": "F2 단공 / F3 전공(원)", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다."]}, "9": {"attribute": "노멀", "attack": "F2 전공(원) / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다."]}, "10": {"attribute": "노멀", "attack": "F2 단공 / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["매그너몬 한방 컷 됩니다."]}, "11": {"attribute": "어둠", "attack": "F2 단공 / F3 단공", "dealer": "공데부 & 공데헤-특", "taunt": "홀옵&홀세", "notes": []}, "12": {"attribute": "어둠", "attack": "F2 단공 / F3 전공(원)", "dealer": "공데부 & 공데헤-특", "taunt": "홀옵&홀세", "notes": ["홀리쉴드 있으면 공격해도 됩니다."]}, "13": {"attribute": "어둠", "attack": "F2 전공(원) / F3 단공", "dealer": "공데부 & 공데헤-특", "taunt": "홀옵&홀세", "notes": ["홀리쉴드 있으면 공격해도 됩니다."]}, "14": {"attribute": "어둠&불", "attack": "F2 단공 / F3 전공(원)", "dealer": "공데부 & 공데헤-특", "taunt": "홀옵&홀세", "notes": ["홀리쉴드 있으면 공격해도 됩니다."]}, "15": {"attribute": "노멀", "attack": "F2 단공 / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["원거리 공격만 가능 합니다.", "반사 가능합니다."]}, "16": {"attribute": "노멀", "attack": "F2 단공 / F3 전공(원)", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다."]}, "17": {"attribute": "바람", "attack": "F2 단공 / F3 전공(원)", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다."]}, "18": {"attribute": "노멀", "attack": "F2 단공 / F3 전공(원)", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다."]}, "19": {"attribute": "바람", "attack": "F2 전공(원) / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다.", "조준 특성 발동 시 바람의 보호 상쇄"]}, "20": {"attribute": "빛", "attack": "F2 단공 / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["3번째 공격시 즉사"]}, "21": {"attribute": "불", "attack": "F2 단공 / F3 공", "dealer": "헤데공 공데부", "taunt": "홀옵&홀세", "notes": ["TP 4배 감속이라 헤이 쓰시는게 좋아요"]}, "22": {"attribute": "금속", "attack": "F2 단공 / F3 단공", "dealer": "헤데공 공데부", "taunt": "홀옵&홀세", "notes": ["TP 4배 감속이라 헤이 쓰시는게 좋아요"]}, "23": {"attribute": "불", "attack": "F2 단공 / F3 전공(원)", "dealer": "헤데공 공데부", "taunt": "홀옵&홀세", "notes": ["TP 4배 감속이라 헤이 쓰시는게 좋아요\n바람의 보호 디지몬 공격해도 됩니다.\n홀리쉴드 있으면 공격해도 됩니다."]}, "24": {"phases": [{"attribute": "빛", "attack": "F2 단공 / F3 전공(원)", "dealer": "헤데공 & 삼솟", "taunt": "홀옵&홀세", "notes": ["TP 4배 감속이라 헤이 쓰시는게 좋아요\n바람의 보호 디지몬 공격해도 됩니다.", "HP 30% 전 까지 맞춰주고 삼솟 박으면 됩니다.\nHP 30% 이하 진화"], "label": "진화 전"}, {"attribute": "어둠", "attack": "F2 단공 / F3 단공", "dealer": "헤데공 & 데공분", "taunt": "홀옵&홀세", "notes": [], "label": "진화 후"}]}, "25": {"phases": [{"attribute": "어둠", "attack": "F2 단공 / F3 전공(원)", "dealer": "헤데공 & 삼솟", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다.\n홀리쉴드 있으면 공격해도 됩니다.", "HP 70% 전 까지 맞춰주고 삼솟 박으면 됩니다.\nHP 70% ~ 35% 6천 초과 데미지 감소 효과 6천 미만으로\nHP 10% 미만 카이저 레오몬 진화"], "label": "진화 전"}, {"attribute": "어둠 & 빛", "attack": "F2 단공 / F3 전공(원)", "dealer": "헤데공 & 삼솟", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다.\n홀리쉴드 있으면 공격해도 됩니다.", "HP 80% 전 까지 맞춰주고 삼솟 박으면 됩니다."], "label": "진화 후"}]}, "26": {"attribute": "노멀", "attack": "F2 단공 / F3 전공(원)", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다."]}, "27": {"attribute": "노멀", "attack": "F2 단공 / F3 전공(원)", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": []}, "28": {"attribute": "노멀", "attack": "F2 전공(근) / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": []}, "29": {"attribute": "어둠", "attack": "F2 전공(원) / F3 전공(원)", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다.\n전특 터져도 그냥 죽기만 할 뿐!"]}, "30": {"phases": [{"attribute": "어둠", "attack": "F2 전공(원) / F3 단공", "dealer": "헤데공 & 삼솟", "taunt": "홀옵&홀세", "notes": ["홀리쉴드 있으면 공격해도 됩니다.\n바람의 보호 디지몬 공격해도 됩니다.\n조준 특성 발동 시 바람의 보호 상쇄\nHP 30% 미만으로 떨어지면 확률적 으로 진화"], "label": "진화 전"}, {"attribute": "어둠 & 불", "attack": "F2 전공(원) / F3 단공", "dealer": "헤데공 & 삼솟", "taunt": "홀옵&홀세", "notes": ["홀리쉴드 있으면 공격해도 됩니다.\n바람의 보호 디지몬 공격해도 됩니다.\nHP 20% 미만 시 즉사 패턴"], "label": "진화 후"}]}};
+ const floorGuides={"1": {"attribute": "어둠", "attack": "F2 전공(원) / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다."]}, "2": {"attribute": "노멀", "attack": "F2 단공 / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": []}, "3": {"attribute": "노멀", "attack": "F2 전공(근) / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["전공이있지만 바람의보호 발동이 안됩니다."]}, "4": {"attribute": "어둠", "attack": "F2 단공 / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": []}, "5": {"attribute": "불", "attack": "F2 전공(원) / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다.", "자비 1, 4, 7턴 도발 및 시너지가 나가서 자비를 빼야 합니다.", "도발 / 딜 / 딜 / 도발 / 딜 / 딜"]}, "6": {"attribute": "노멀", "attack": "F2 단공 / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": []}, "7": {"attribute": "땅", "attack": "F2 전공(원) / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다."]}, "8": {"attribute": "노멀", "attack": "F2 단공 / F3 전공(원)", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다."]}, "9": {"attribute": "노멀", "attack": "F2 전공(원) / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다."]}, "10": {"attribute": "노멀", "attack": "F2 단공 / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["매그너몬 한방 컷 됩니다."]}, "11": {"attribute": "어둠", "attack": "F2 단공 / F3 단공", "dealer": "공데부 & 공데헤-특", "taunt": "홀옵&홀세", "notes": []}, "12": {"attribute": "어둠", "attack": "F2 단공 / F3 전공(원)", "dealer": "공데부 & 공데헤-특", "taunt": "홀옵&홀세", "notes": ["홀리쉴드 있으면 공격해도 됩니다."]}, "13": {"attribute": "어둠", "attack": "F2 전공(원) / F3 단공", "dealer": "공데부 & 공데헤-특", "taunt": "홀옵&홀세", "notes": ["홀리쉴드 있으면 공격해도 됩니다."]}, "14": {"attribute": "어둠&불", "attack": "F2 단공 / F3 전공(원)", "dealer": "공데부 & 공데헤-특", "taunt": "홀옵&홀세", "notes": ["홀리쉴드 있으면 공격해도 됩니다."]}, "15": {"attribute": "노멀", "attack": "F2 단공 / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["원거리 공격만 가능 합니다.", "반사 가능합니다."]}, "16": {"attribute": "노멀", "attack": "F2 단공 / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다."]}, "17": {"attribute": "바람", "attack": "F2 단공 / F3 전공(원)", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다."]}, "18": {"attribute": "노멀", "attack": "F2 단공 / F3 전공(원)", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다."]}, "19": {"attribute": "바람", "attack": "F2 전공(원) / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다.", "조준 특성 발동 시 바람의 보호 상쇄"]}, "20": {"attribute": "빛", "attack": "F2 단공 / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["3번째 공격시 즉사"]}, "21": {"attribute": "불", "attack": "F2 단공 / F3 공", "dealer": "헤데공 공데부", "taunt": "홀옵&홀세", "notes": ["TP 4배 감속이라 헤이 쓰시는게 좋아요"]}, "22": {"attribute": "금속", "attack": "F2 단공 / F3 단공", "dealer": "헤데공 공데부", "taunt": "홀옵&홀세", "notes": ["TP 4배 감속이라 헤이 쓰시는게 좋아요"]}, "23": {"attribute": "불", "attack": "F2 단공 / F3 전공(원)", "dealer": "헤데공 공데부", "taunt": "홀옵&홀세", "notes": ["TP 4배 감속이라 헤이 쓰시는게 좋아요\n바람의 보호 디지몬 공격해도 됩니다.\n홀리쉴드 있으면 공격해도 됩니다."]}, "24": {"phases": [{"attribute": "빛", "attack": "F2 단공 / F3 전공(원)", "dealer": "헤데공 & 삼솟", "taunt": "홀옵&홀세", "notes": ["TP 4배 감속이라 헤이 쓰시는게 좋아요\n바람의 보호 디지몬 공격해도 됩니다.", "HP 30% 전 까지 맞춰주고 삼솟 박으면 됩니다.\nHP 30% 이하 진화"], "label": "진화 전"}, {"attribute": "어둠", "attack": "F2 단공 / F3 단공", "dealer": "헤데공 & 데공분", "taunt": "홀옵&홀세", "notes": [], "label": "진화 후"}]}, "25": {"phases": [{"attribute": "어둠", "attack": "F2 단공 / F3 전공(원)", "dealer": "헤데공 & 삼솟", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다.\n홀리쉴드 있으면 공격해도 됩니다.", "HP 70% 전 까지 맞춰주고 삼솟 박으면 됩니다.\nHP 70% ~ 35% 6천 초과 데미지 감소 효과 6천 미만으로\nHP 10% 미만 카이저 레오몬 진화"], "label": "진화 전"}, {"attribute": "어둠 & 빛", "attack": "F2 단공 / F3 전공(원)", "dealer": "헤데공 & 삼솟", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다.\n홀리쉴드 있으면 공격해도 됩니다.", "HP 80% 전 까지 맞춰주고 삼솟 박으면 됩니다."], "label": "진화 후"}]}, "26": {"attribute": "노멀", "attack": "F2 단공 / F3 전공(원)", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다."]}, "27": {"attribute": "노멀", "attack": "F2 단공 / F3 전공(원)", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": []}, "28": {"attribute": "노멀", "attack": "F2 전공(근) / F3 단공", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": []}, "29": {"attribute": "어둠", "attack": "F2 전공(원) / F3 전공(원)", "dealer": "공데부", "taunt": "홀옵&홀세", "notes": ["바람의 보호 디지몬 공격해도 됩니다.\n전특 터져도 그냥 죽기만 할 뿐!"]}, "30": {"phases": [{"attribute": "어둠", "attack": "F2 전공(원) / F3 단공", "dealer": "헤데공 & 삼솟", "taunt": "홀옵&홀세", "notes": ["홀리쉴드 있으면 공격해도 됩니다.\n바람의 보호 디지몬 공격해도 됩니다.\n조준 특성 발동 시 바람의 보호 상쇄\nHP 30% 미만으로 떨어지면 확률적 으로 진화"], "label": "진화 전"}, {"attribute": "어둠 & 불", "attack": "F2 전공(원) / F3 단공", "dealer": "헤데공 & 삼솟", "taunt": "홀옵&홀세", "notes": ["홀리쉴드 있으면 공격해도 됩니다.\n바람의 보호 디지몬 공격해도 됩니다.\nHP 20% 미만 시 즉사 패턴"], "label": "진화 후"}]}};
  const floorGuide=floorGuides[floor]||null;
  const guideText=value=>String(value).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
  const renderUpperFloorGuide=guide=>(guide.phases||[guide]).map(phase=>`<section class="dark-floor-phase">${phase.label?`<h4>${guideText(phase.label)}</h4>`:''}<div class="dark-floor-stats"><p><strong>속성 :</strong> ${guideText(phase.attribute)}</p><p><strong>공격 모션 :</strong> ${guideText(phase.attack)}</p><p><strong>딜러 :</strong> ${guideText(phase.dealer)} / <strong>도발 :</strong> ${guideText(phase.taunt)}</p></div>${phase.notes.length?`<div class="dark-floor-notes">${phase.notes.map(note=>`<p class="dark-floor-note-lines"><span>${guideText(note).replace(/\n/g,'<br>')}</span></p>`).join('')}</div>`:''}</section>`).join('');
