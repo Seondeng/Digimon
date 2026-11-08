@@ -120,7 +120,8 @@ function renderJewelEnhancement() {
   const jewels = [
     ['현무몬의 보옥', 'xuanwumon', '건강', '단일'],
     ['백호몬의 보옥', 'baihumon', '민첩', '전체'],
-    ['주작몬의 보옥', 'zhuqiaomon', '힘', '원거리']
+    ['주작몬의 보옥', 'zhuqiaomon', '힘', '원거리'],
+    ['청룡몬의 보옥', 'azulongmon', '지능', '근거리']
   ];
   const statHeaders = [
     '강화 단계',
@@ -135,9 +136,9 @@ function renderJewelEnhancement() {
   });
   addEnhancementTable(panel, '단계별 보옥 능력치', statHeaders, statRows);
 
-  const orb = ['징표', [535, 536, 537]];
-  const symbol = ['힘의정수', [540, 541, 542]];
-  const leaf = ['힘의근원', [545, 546, 547]];
+  const orb = ['징표', [535, 536, 537, 538]];
+  const symbol = ['힘의정수', [540, 541, 542, 543]];
+  const leaf = ['힘의근원', [545, 546, 547, 548]];
   const materials = [
     [2, orb, 1, '—'],
     [3, orb, 2, '4개'],
@@ -175,6 +176,6 @@ function renderJewelEnhancement() {
   ], rows, [
     '일반 강화는 2억 Bit, 확정 강화는 4억 Bit가 필요합니다.',
     '+2는 일반 강화만 가능합니다. 아이템 부스터와 디지몬 축복은 두 강화 방식에 같은 수량이 필요합니다.',
-    '단계별 재료 아이콘은 왼쪽부터 현무몬, 백호몬, 주작몬 순서입니다.'
+    '단계별 재료 아이콘은 왼쪽부터 현무몬, 백호몬, 주작몬, 청룡몬 순서입니다.'
   ]);
 }
