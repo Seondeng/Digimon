@@ -115,12 +115,22 @@ function renderSimpleDungeonGuide(name,section='map'){
   ['metalseadramon','메탈시드라몬'],
   ['cherrymon','쥬레이몬'],
   ['metaletemon','메탈에테몬'],
-  ['puppetmon','피노키오몬'],
+  ['puppetmon','피노키몬'],
   ['batpuppetmon','배드퍼펫몬'],
   ['machinedramon','파워드라몬'],
   ['ladydevimon','레이디데블몬'],
   ['piedmon','피에몬'],
   ['apocalymon','아포카리몬']
+ ]:name==='언더포레스트'?[
+  ['debuff','패배조건 / 디버프'],
+  ['map','지도'],
+  ['darongmon','대롱몬'],
+  ['grankuwagamon','그랜쿠가몬'],
+  ['arukenimon','아라크레몬'],
+  ['atlurkabuterimon','아트라캅테리몬'],
+  ['herculeskabuterimon','헤라클레스 캅테리몬'],
+  ['grankuwagamon-grandiskuwagamon','그랜쿠가몬/그랑디스쿠가몬'],
+  ['tyrantkabuterimon','타이런트 캅테리몬']
  ]:[['map','지도'],['guide','공략']];
  const [selected,selectedLabel]=items.find(([id])=>id===section)||items[0];
  const panel=document.querySelector('#reviewPanel');panel.replaceChildren();
@@ -130,6 +140,14 @@ function renderSimpleDungeonGuide(name,section='map'){
  items.forEach(([id,label],i)=>{
   const button=document.createElement('button');
   button.type='button';button.id='simpleDungeonGuide-'+id;button.textContent=label;
+  if(name==='언더포레스트'&&id==='debuff'){
+   button.replaceChildren();
+   for(const text of ['패배조건','디버프']){const line=document.createElement('span');line.textContent=text;line.style.display='block';button.append(line);}
+  }
+  if(name==='언더포레스트'&&id==='grankuwagamon-grandiskuwagamon'){
+   button.replaceChildren();
+   for(const text of ['그랜쿠가몬','그랑디스쿠가몬']){const line=document.createElement('span');line.textContent=text;line.style.cssText='display:block;white-space:nowrap;font-size:11px';button.append(line);}
+  }
   button.className=id===selected?'selected':'';
   button.setAttribute('role','tab');
   button.setAttribute('aria-selected',String(id===selected));
@@ -154,13 +172,119 @@ function renderSimpleDungeonGuide(name,section='map'){
  content.append(heading);
  if(isSpikeMountain&&selected==='piedmon-card'){
   renderPiedmonCardEffects(content);
+ }else if(name==='언더포레스트'&&selected==='tyrantkabuterimon'){
+  const phases=[
+   ['타이런트캅테리몬 (1페이즈)(바이러스, 어둠)',[
+    ['공격 패턴','모든 공격 시 추가 특성 도발을 무시하며 대상의 방어 카드를 무효\n필드에 생존한 파라사이몬 1마리당 모든 공격 시 데미지 40% 증가'],
+    ['소환 패턴','상대 필드에 파라사이몬이 존재하는 경우 파라사이몬 2마리 소환'],
+    ['방어 패턴','모든 방어 시 방어 횟수당 80의 고정 데미지 반사 (최대 100회)\n필드에 생존한 파라사이몬 1마리당 받는 데미지 25% 감소'],
+    ['진화 패턴','남은 HP가 30% 이하이며 아군 진영에 생존한 파라사이몬이 없는 경우 타이런트캅테리몬 (2페이즈) 진화']
+   ]],
+   ['타이런트캅테리몬 (2페이즈)(바이러스, 어둠)',[
+    ['공격 패턴','모든 공격 시 공격 횟수당 데미지 40% 증가 (최대 100회)\n모든 공격 시 대상의 방어 특성을 무시하며 펜릴소드 사용'],
+    ['방어 패턴','모든 방어 시 방어 횟수당 방어력 6% 감소 (최대 20회)\nF3 스킬 사용 이후 다음 공격 자신의 공격 전까지 모든 공격을 회피'],
+    ['소환 패턴','남은 HP가 60% 미만인 경우 스나이몬, 쿠가몬 소환\n남은 HP가 30% 미만인 경우 주엘비몬, 아트라캅테리몬 소환']
+   ]]
+  ];
+  for(const [label,patterns] of phases){
+   const phase=document.createElement('section');phase.style.marginTop='24px';
+   const title=document.createElement('h3');title.textContent=label;phase.append(title);
+   for(const [label,text] of patterns){
+    const block=document.createElement('div');block.className='sindramon-warning boss-pattern';
+    const title=document.createElement('strong');title.textContent=label;
+    const description=document.createElement('p');description.style.whiteSpace='pre-line';description.textContent=text;
+    block.append(title,description);phase.append(block);
+   }
+   content.append(phase);
+  }
+ }else if(name==='언더포레스트'&&selected==='debuff'){
+  const effects=[
+   ['패배조건','전투 패배 또는 제한 시간 초과 시\n디아크카드로 소환된 용병이 사망 시 (단 보스 전투 시는 용병이 사망한 경우에도 패배되지 않습니다.)'],
+   ['회피 특성 발동 불가','모든 회피 특성 발동이 불가합니다. (전용 특성으로 인한 회피 또는 자연 회피는 가능)'],
+   ['부활의약 사용 불가','던전 내 부활의약 사용이 불가합니다.'],
+   ['박하 사탕 사용 불가','던전 내 박하 사탕 사용이 불가합니다.'],
+   ['[올델리트] 발동 데미지','던전 내 로얄나이츠포스의 [올델리트] 발동 시 데미지 700% 증가로 변경됩니다.']
+  ];
+  for(const [label,text] of effects){
+   const block=document.createElement('div');block.className='sindramon-warning boss-pattern';
+   const title=document.createElement('strong');title.textContent=label;
+   const description=document.createElement('p');description.style.whiteSpace='pre-line';description.textContent=text;
+   block.append(title,description);content.append(block);
+  }
  }else{
   const note=document.createElement('p');note.className='wbnote';note.textContent=heading.textContent+' 내용 등록 전';
   if(isSpikeMountain){
    const guide=document.createElement('div');guide.className='sindramon-guide';
    const image=document.createElement('img');image.src='assets/spike-mountain/'+selected+'.png';image.alt=selectedLabel;
    image.width=394;image.height=303;image.style.cssText='height:auto;aspect-ratio:auto;object-fit:contain';
-   guide.append(image,note);content.append(guide);
+   guide.append(image);
+   if(['whamon','metalseadramon','cherrymon','metaletemon','puppetmon','batpuppetmon','machinedramon','ladydevimon','piedmon','apocalymon'].includes(selected)){
+    const tactics=document.createElement('section');tactics.className='sindramon-tactics';
+    const title=document.createElement('h3');title.textContent=selectedLabel+' 공략';tactics.append(title);
+    const blocks=selected==='apocalymon'?[
+     [['아포카리몬이 피노키몬의 기술을 사용합니다.'],'딜러와 도발이 번갈아 가며 공격하세요.'],
+     [['아포카리몬이 피에몬의 기술을 사용합니다.'],'연속으로 2번 공격해 옵니다.'],
+     [['아포카리몬이 메탈시드라몬과 같은 속도로 공격을 회피합니다.']],
+     [['아포카리몬이 파워드라몬의 기술을 사용하여 고정 데미지를 추가합니다.']],
+     [['HP가 0~1%로 내려가면 진화하며 HP가 최대로 회복됩니다.','이후 카운트를 센 뒤 즉사기를 사용합니다.'],'반사 디지몬을 소환하면 됩니다.']
+    ]:selected==='piedmon'?[
+     [['전투 시작 시 가루다몬, 아트라캅테리몬, 쥬드몬, 릴리몬을 소환']],
+     [['가루다몬, 아트라캅테리몬, 쥬드몬, 릴리몬이 전부 사망하면 메탈가루몬, 워그레이몬을 소환'],[
+      ['메탈가루몬','메탈가루몬이 미사일을 개방하여 반격하며 고정 데미지를 줍니다.'],
+      ['워그레이몬','매 턴 펜릴소드를 이용해 공격합니다. 바람의 보호 불가능']
+     ]],
+     [['피에몬의 트럼프 검이 디지몬에게 박혀 고정 데미지가 추가됩니다.']],
+     [['피에몬이 당신의 불행한 운명을 비웃습니다.'],'연속으로 2번 공격해 옵니다.']
+    ]:selected==='ladydevimon'?[
+     [['레이디 데블몬이 상대의 힘을 다크 에너지로 바꿔 강력한 공격을 준비합니다.'],'레이디 데블몬의 다음 공격이 강력해집니다.'],
+     [['레이디 데블몬이 암흑의 비상물을 발사하여 고정 데미지가 추가됩니다.']]
+    ]:selected==='machinedramon'?[
+     [['파워드라몬이 정확한 조준으로 도발을 무시한 공격을 가합니다.'],'도발을 무시합니다.'],
+     [['파워드라몬이 단단해지며 일시적으로 데미지가 감소합니다.'],'데미지 감소'],
+     [['파워드라몬이 강력한 공격을 준비하며 고정 데미지가 추가됩니다.'],'정해진 수치의 데미지를 넘기지 못하면 고정 데미지가 추가되어 들어옵니다.'],
+     [['강력한 공격에 성공하여 파워드라몬이 모은 에너지가 초기화됩니다.'],'정해진 수치 이상의 데미지를 주면 모은 스택이 초기화됩니다.']
+    ]:selected==='batpuppetmon'?[
+     [['배드퍼펫몬을 공격한 디지몬이 전의를 상실해 갑니다.'],'공격할수록 데미지가 감소합니다.'],
+     [['배드퍼펫몬이 치명적인 공격에 성공하여 고정 데미지가 추가됩니다.'],'방카만 잘 올리시면 됩니다.']
+    ]:selected==='puppetmon'?[
+     [['피노키몬의 꼭두각시술에 조종당해 아군이 대신 공격을 받습니다.'],'딜러로 2번 공격한 뒤 도발로 기공 1대를 쳐주세요.'],
+     [['바람의 보호 불가능']]
+    ]:selected==='metaletemon'?[
+     [['메탈에테몬이 자기가 던진 바나나에 미끄러져 다른 대상을 공격합니다.'],'도발 무시'],
+     [['강철같은 피부가 치명적인 공격을 방어합니다.'],'데미지 감소'],
+     [['메탈에테몬이 던진 바나나에 미끄러져 공격이 빗나갑니다.'],'포스 펜릴을 사용해야 합니다.']
+    ]:selected==='cherrymon'?[
+     [['HP 30% 이하로 내려갈 시 확률적으로 진화'],['HP가 최대로 회복됩니다.','머시풀 10스택을 쌓고 전특으로 처치하는 것이 편합니다.']],
+     [['쥬레이몬의 뛰어난 지혜로 치명적인 공격의 위력을 감소시킵니다.'],'데미지 감소'],
+     [['쥬레이몬이 담쟁이 덩굴을 활용해 적에게서 양분을 흡수합니다.'],'HP를 회복합니다. (최대 HP까지 회복하는 것은 아닙니다.)']
+    ]:selected==='metalseadramon'?[
+     [['불속성 원소를 가진 디지몬으로 공격 시 데미지 감소']],
+     [['메탈시드라몬이 엄청난 속도로 공격을 회피합니다.'],'일정 확률로 공격을 회피합니다.'],
+     [['메탈시드라몬의 강력한 공격이 대상을 관통하여 고정 데미지가 추가됩니다.'],'홀옵을 올리세요.'],
+     [['메탈시드라몬이 거대한 해일을 일으켜 공격합니다.'],'홀옵을 올리세요.'],
+     [['펜릴소드를 사용한 공격 패턴이므로 바람의 보호 불가능']]
+    ]:[
+     [
+      ['공격을 받은 고래몬이 도약을 준비하며 아래로 잠수합니다.','고래몬이 잠수한 깊이 만큼 도약하며 강력한 고정 데미지가 추가됩니다.'],
+      '공격 턴이 지난 만큼 고정 데미지가 축적되었다가 한 번에 들어옵니다.'
+     ],
+     [
+      ['고래몬이 깊은 곳으로 잠수하여 공격을 회피 합니다.'],
+      '일정 확률로 공격을 회피합니다.'
+     ]
+    ];
+    for(const [messages,description] of blocks){
+     const block=document.createElement('div');block.className='sindramon-warning boss-pattern';
+     for(const message of messages){const strong=document.createElement('strong');strong.style.display='block';strong.textContent=message;block.append(strong);}
+     for(const text of (Array.isArray(description)?description:description?[description]:[])){
+      if(Array.isArray(text)){const label=document.createElement('strong');label.style.cssText='display:block;margin-top:16px';label.textContent=text[0];block.append(label);}
+      const detail=document.createElement('p');detail.textContent=Array.isArray(text)?text[1]:text;block.append(detail);
+     }
+     tactics.append(block);
+    }
+    guide.append(tactics);
+   }else{guide.append(note);}
+   content.append(guide);
   }else{
    content.append(note);
   }
@@ -230,8 +354,8 @@ function renderBeastMaterials(dungeon){
  panel.innerHTML=`<div class="royal-material-layout"><nav class="royal-material-tree" aria-label="재료 몬스터"><section><h3>재료</h3><div><button type="button" class="selected" aria-pressed="true">${entry.name}</button></div></section></nav><div class="royal-material-detail"><h2>재료 · ${entry.name}</h2><article class="keycard"><h3>${entry.name}</h3><p>좌표 데이터 (${entry.data})</p><div class="keypair"><div><h4>몬스터 정보</h4><a href="${portrait}" target="_blank" rel="noopener"><img src="${portrait}" alt="${entry.name}" width="394" height="303" style="width:394px;max-width:100%;height:auto"></a></div><div><h4>위치 지도</h4><a href="${map}" target="_blank" rel="noopener"><img src="${map}" alt="${entry.name} 위치 지도 · 주황색 표시 4곳" width="${entry.map[0]}" height="${entry.map[1]}" style="width:394px;max-width:100%;height:auto"></a></div></div></article></div></div>`;
 }
 function renderBeastGuide(name,section='map'){
- const items=[['map','지도'],['pit','PIT카드'],...(name==='현무몬 던전'?[['kumbhiramon','굼비라몬'],['vikaralamon','비가라몬'],['vajramon','바지라몬'],['arbormon','알볼몬'],['petaldramon','페탈드라몬'],['xuanwumon','현무몬']]:name==='주작몬 던전'?[['santiramon','산티라몬'],['indramon','인다라몬'],['pajiramon','파지라몬'],['agnimon','아그니몬'],['vritramon','브리트라몬'],['zhuqiaomon','주작몬']]:[])];
- const selected=items.some(([id])=>id===section)?section:'map';
+ const items=[...(name==='주작몬 던전'?[]:[['map','지도']]),['pit','PIT카드'],...(name==='현무몬 던전'?[['kumbhiramon','굼비라몬'],['vikaralamon','비가라몬'],['vajramon','바지라몬'],['arbormon','알볼몬'],['petaldramon','페탈드라몬'],['xuanwumon','현무몬']]:name==='주작몬 던전'?[['santiramon','산티라몬'],['indramon','인다라몬'],['pajiramon','파지라몬'],['agnimon','아그니몬'],['vritramon','브리트라몬'],['zhuqiaomon','주작몬']]:[])];
+ const selected=items.some(([id])=>id===section)?section:items[0][0];
  const panel=document.querySelector('#reviewPanel');panel.replaceChildren();
  const layout=document.createElement('div');layout.className='baihuguide';
  const nav=document.createElement('nav');nav.className='baihumenu';nav.setAttribute('aria-label',name+' 공략 카테고리');nav.setAttribute('role','tablist');
@@ -239,7 +363,23 @@ function renderBeastGuide(name,section='map'){
  items.forEach(([id,label],i)=>{const button=document.createElement('button');button.type='button';button.textContent=label;button.className=id===selected?'selected':'';button.setAttribute('role','tab');button.setAttribute('aria-selected',String(id===selected));button.setAttribute('aria-controls',content.id);button.tabIndex=id===selected?0:-1;button.onclick=()=>renderBeastGuide(name,id);button.onkeydown=event=>{let next;if(['ArrowDown','ArrowRight'].includes(event.key))next=(i+1)%items.length;else if(['ArrowUp','ArrowLeft'].includes(event.key))next=(i-1+items.length)%items.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=items.length-1;else return;event.preventDefault();renderBeastGuide(name,items[next][0]);document.querySelector('#reviewPanel .baihumenu').children[next].focus();};nav.append(button);});
  const heading=document.createElement('h2');heading.textContent=items.find(([id])=>id===selected)[1];
  content.append(heading);
- if(name==='현무몬 던전'&&(selected==='map'||selected==='pit')){
+ if(name==='주작몬 던전'&&selected==='pit'){
+  heading.textContent='PIT 카드';
+  const note=document.createElement('p');note.textContent='주던은 딱 35개만 데출하시면 됩니다.';
+  const figure=document.createElement('figure');figure.style.cssText='margin:0;width:100%;max-width:394px';
+  const link=document.createElement('a');link.href='assets/zhuqiaomon/pit-card.png';link.target='_blank';link.rel='noopener';link.setAttribute('aria-label','주작몬 던전 PIT 카드 원본 보기');
+  const image=document.createElement('img');image.src=link.href;image.alt='주작몬 던전 PIT 카드 격자 UI. 남은 개수 0, 제출 개수 0.';image.style.cssText='display:block;width:100%;height:auto';
+  const layout=document.createElement('div');layout.className='pit-content-stack pit-explained';
+  layout.style.cssText='display:flex;flex-direction:row;flex-wrap:wrap';figure.style.flex='0 1 394px';
+  const explanation=document.createElement('section');explanation.className='pit-explanation';
+  explanation.style.flex='1 1 220px';
+  const title=document.createElement('h3');title.textContent='PIT 카드';explanation.append(title,note);
+  const filledFigure=document.createElement('figure');filledFigure.style.cssText=figure.style.cssText;
+  const filledLink=document.createElement('a');filledLink.href='assets/zhuqiaomon/pit-card-35.png';filledLink.target='_blank';filledLink.rel='noopener';filledLink.setAttribute('aria-label','주작몬 던전 PIT 카드 35개 제출 원본 보기');
+  const filledImage=document.createElement('img');filledImage.src=filledLink.href;filledImage.alt='주작몬 던전 PIT 카드 35칸 배치. 남은 개수 0, 제출 개수 35.';filledImage.style.cssText=image.style.cssText;
+  filledLink.append(filledImage);filledFigure.append(filledLink);
+  link.append(image);figure.append(link);layout.append(figure,filledFigure,explanation);content.append(layout);
+ }else if(name==='현무몬 던전'&&(selected==='map'||selected==='pit')){
   const isMap=selected==='map';
   if(isMap)heading.textContent='현무몬 던전 지도';
   const figure=document.createElement('figure');
@@ -309,19 +449,19 @@ function renderBeastGuide(name,section='map'){
   tactics.append(title);
   const xuanwuPatterns={
    vikaralamon:[
-    ['구륜 패턴','적색구륜 – 비가라몬의 공격이 강하게 들어옵니다.','녹색구륜 – 상처를 치유합니다.','파란구륜 – 상대의 행동을 방해합니다.'],
+    ['구륜','적색구륜 – 비가라몬의 공격이 강하게 들어옵니다.','녹색구륜 – 상처를 치유합니다.','파란구륜 – 상대의 행동을 방해합니다.'],
     ['바람의 보호 가능']
    ],
    vajramon:[
-    ['패턴','반격 – 공격받은 데미지를 반사합니다.','단단해지기 – 공격을 받을수록 방어력이 상승합니다.','강력한 공격 – 바지라몬의 데미지가 상승합니다.'],
+    ['','반격 – 공격받은 데미지를 반사합니다.','단단해지기 – 공격을 받을수록 방어력이 상승합니다.','강력한 공격 – 바지라몬의 데미지가 상승합니다.'],
     ['바람의 보호 가능']
    ],
    arbormon:[
-    ['패턴','속성 공격 추가 데미지'],
+    ['','속성 공격 추가 데미지'],
     ['카드 세팅','홀세 · 특카']
    ],
    xuanwumon:[
-    ['패턴',
+    ['',
      ['적색 -','현무몬이 분노하며 붉은색으로 빛나기 시작합니다.\n즉사 패턴은 적색기운 카드를 사용하면 잠시 사라집니다.'],
      ['녹색 -','상처를 회복하기 위해서 녹색으로 빛나기 시작합니다.\n회복 패턴은 녹색기운 카드를 사용하면 잠시 사라집니다.'],
      '데미지 감소 – 현무몬의 방어력이 높아져 받는 데미지가 감소합니다.',
@@ -330,6 +470,43 @@ function renderBeastGuide(name,section='map'){
     ['바람의 보호 · 예감 가능']
    ]
   };
+  const zhuqiaoPatterns={
+   santiramon:[
+    ['수십 대의 파오구를 뱉어 광범위한 공격을 합니다.','전체 공격'],
+    ['탈피',
+     'HP가 60% 미만인 상태에서 TP가 차면 방어 모드로 전환하며 탈피합니다. 탈피하면 HP가 100%로 회복됩니다.',
+     '다시 TP가 100%가 되면 TP가 초기화되면서 공격 모드로 전환합니다.',
+     '탈피를 반복할수록 탈피할 확률이 줄어듭니다.',
+     '탈피하는 동안에는 데미지가 잘 들어가지 않으므로 TP가 찰 때까지 기다립니다.',
+     '또는 HP를 60% 위로 조절해 두고 한 번에 밀어야 합니다.'
+    ]
+   ],
+   indramon:[
+    ['파오페이로 초음파를 일으켜 고정 데미지가 추가됩니다.','고정 데미지 추가'],
+    ['음흉하게 웃으면서 무방비한 자세로 공격을 받습니다.','슈퍼파워충전기를 넣고 공격하시면 됩니다.']
+   ],
+   pajiramon:[
+    ['치명적인 마비독이 묻은 화살을 가장 위협적인 적을 향해 발사합니다.',
+     '첫 턴에는 아군 중 공격력이 가장 높은 디지몬을 공격합니다. 마비에 걸려 턴을 진행하지 못합니다.',
+     '일반 공격 1번과 매우 강한 공격 1번을 번갈아 사용합니다.'
+    ],
+    ['슈퍼 파워 충전기가 메라몬에게 치명적인 추가 데미지를 가합니다.',
+     '슈퍼파워충전기로 메라몬을 정리한 뒤 밀면 됩니다.',
+     '메라몬이 공격할 때, 죽은 메라몬 1마리당 33% 확률로 아군 디지몬의 마비와 독을 해제합니다.'
+    ]
+   ],
+   agnimon:[
+    ['성스러운 불꽃의 힘이 HP에 비례된 고정 데미지를 가합니다.','고정 데미지'],
+    ['공격을 흘려보내며 눈을 감고 위협적인 공격을 준비합니다.','회피 패턴에서는 도발이 공격해 주시면 됩니다.']
+   ],
+   zhuqiaomon:[
+    ['공략',
+     '데드메라몬이 있으면 데미지가 잘 들어가지 않습니다.',
+     '슈퍼파워충전기로 데드메라몬을 정리한 뒤 공격하면 됩니다.'
+    ]
+   ]
+  };
+  const patterns=name==='현무몬 던전'?xuanwuPatterns:zhuqiaoPatterns;
   if(name==='현무몬 던전'&&selected==='kumbhiramon'){
    const strategy=document.createElement('div');strategy.className='sindramon-warning boss-pattern';
    [['4번째 공격에 회피를 합니다.','3공 1회피. 회피턴에는 도발 공격 나가면 됩니다.'],['회피 턴에 특수카드로 공격 가능 합니다.','특수카드 공격 가능']].forEach(([label,detail],index)=>{const strong=document.createElement('strong');strong.textContent=label;if(index)strong.style.marginTop='18px';const line=document.createElement('p');line.textContent=detail;strategy.append(strong,line);});
@@ -341,13 +518,15 @@ function renderBeastGuide(name,section='map'){
    windDetail.textContent='근거리 전체기 보유';
    windWarning.append(windTitle,windDetail);
    const reward=document.createElement('div');reward.className='sindramon-warning boss-pattern';const rewardText=document.createElement('strong');rewardText.textContent='잡으면 적색기운, 녹색기운 카드 획득 합니다.';reward.append(rewardText);tactics.append(strategy,windWarning,reward);
-  }else if(name==='현무몬 던전'&&xuanwuPatterns[selected]){
-   for(const [label,...details] of xuanwuPatterns[selected]){
+  }else if(patterns[selected]){
+   for(const [label,...details] of patterns[selected]){
     const block=document.createElement('div');
     block.className='sindramon-warning boss-pattern';
-    const strong=document.createElement('strong');
-    strong.textContent=label;
-    block.append(strong);
+    if(label){
+     const strong=document.createElement('strong');
+     strong.textContent=label;
+     block.append(strong);
+    }
     for(const detail of details){
      const line=document.createElement('p');
      if(Array.isArray(detail)){
