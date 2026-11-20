@@ -116,7 +116,7 @@ function renderAverageLevelCalculator(){
  document.querySelectorAll('#nav button,#nav [data-home]').forEach(el=>el.classList.toggle('active',el.dataset.name==='평랩 계산기'));
  const panel=document.querySelector('#reviewPanel');panel.replaceChildren();
  const heading=document.createElement('h2');heading.textContent='평랩 계산기';
- const note=document.createElement('p');note.className='wbnote';note.textContent='최대 5명까지 입력할 수 있습니다. 평균은 입력한 인원만 계산하며, 목표 평균을 넣으면 5명 파티 기준으로 빈자리 레벨을 추천합니다.';
+ const note=document.createElement('p');note.className='wbnote';note.textContent='참여하지 않는 자리는 제외하세요. 평균은 입력한 인원만 계산하고, 빈자리 추천은 제외하지 않은 자리 수를 기준으로 계산합니다.';
  const form=document.createElement('form');form.style.maxWidth='600px';
  const targetRow=document.createElement('div');targetRow.className='traitinputs';targetRow.style.marginBottom='20px';
  const targetLabel=document.createElement('label');targetLabel.textContent='목표 평균 레벨 (선택)';
@@ -127,17 +127,18 @@ function renderAverageLevelCalculator(){
  const experienceRange=document.createElement('p');experienceRange.style.cssText='font-size:14px;margin-top:12px;color:var(--gold)';result.append(average,detail,experienceRange);
  const recommendation=document.createElement('div');recommendation.className='traitresult';recommendation.setAttribute('aria-live','polite');recommendation.hidden=true;
  const reset=document.createElement('button');reset.type='reset';reset.className='wbback';reset.textContent='초기화';reset.style.marginTop='12px';
- const count=5;const inputs=[];
+ const inputs=[];const slotButtons=[];
  function calculate(){
   experienceRange.textContent='';
   recommendation.replaceChildren();recommendation.hidden=target.value==='';
-  const active=inputs.slice(0,count);
+  const active=inputs.filter(input=>!input.disabled);const count=active.length;
+  if(!count){average.textContent='평균 레벨 —';detail.textContent='계산할 자리를 하나 이상 다시 열어 주세요.';recommendation.hidden=true;return;}
   const filled=active.filter(input=>input.value!=='');
   const levels=filled.map(input=>input.valueAsNumber);
   if(levels.some(level=>!Number.isSafeInteger(level)||level<1)){average.textContent='레벨을 확인해 주세요';detail.textContent='레벨은 1 이상의 정수로 입력하세요.';return;}
   const total=levels.reduce((sum,level)=>sum+level,0);
   if(target.value!==''){
-   const goal=target.valueAsNumber;const missing=active.map((input,i)=>input.value===''?i:-1).filter(i=>i>=0);
+   const goal=target.valueAsNumber;const missing=active.filter(input=>input.value==='').map(input=>inputs.indexOf(input));
    const required=goal*count-total;const rounded=Math.round(required);
    const title=document.createElement('strong');title.textContent='빈자리 추천 레벨';recommendation.append(title);
    const message=document.createElement('p');recommendation.append(message);
@@ -147,7 +148,7 @@ function renderAverageLevelCalculator(){
    else if(!Number.isSafeInteger(rounded)||rounded<missing.length){message.textContent='입력한 레벨을 유지하면서 이 목표 평균을 맞출 수 없습니다. 목표나 입력 레벨을 조정하세요.';}
    else{
     const base=Math.floor(rounded/missing.length);const extra=rounded%missing.length;
-    message.textContent='5명 파티 목표 평균 '+goal.toLocaleString('ko-KR')+' · 남은 '+missing.length+'명 합계 '+rounded.toLocaleString('ko-KR');
+    message.textContent=count+'명 파티 목표 평균 '+goal.toLocaleString('ko-KR')+' · 남은 '+missing.length+'명 합계 '+rounded.toLocaleString('ko-KR');
     const list=document.createElement('div');list.style.cssText='display:flex;gap:12px;flex-wrap:wrap;margin-top:12px';
     missing.forEach((slot,i)=>{const item=document.createElement('div');item.style.cssText='padding:10px 14px;border:1px solid var(--line);border-radius:7px';item.textContent=(slot+1)+'번: '+(base+(i<extra?1:0)).toLocaleString('ko-KR')+'레벨';list.append(item);});
     const hint=document.createElement('p');hint.textContent='남은 자리의 레벨 차이가 가장 작은 조합입니다. 이 조합의 경험치 획득 가능 레벨: '+(goal-5).toLocaleString('ko-KR',{maximumFractionDigits:2})+' ~ '+(goal+5).toLocaleString('ko-KR',{maximumFractionDigits:2});
@@ -164,11 +165,14 @@ function renderAverageLevelCalculator(){
   experienceRange.textContent='경험치 획득 가능 레벨: '+min+' ~ '+max+' (평균 레벨 ±5)';
  }
  for(let i=0;i<5;i++){
+  const slot=document.createElement('div');slot.style.cssText='display:grid;gap:6px;align-content:start';
   const label=document.createElement('label');label.textContent=(i+1)+'번 레벨';
   const input=document.createElement('input');input.type='number';input.min='1';input.step='1';input.inputMode='numeric';input.placeholder='레벨 입력';input.required=true;input.oninput=calculate;
-  label.append(input);inputs.push(input);fields.append(label);
+  const toggle=document.createElement('button');toggle.type='button';toggle.textContent='제외';toggle.setAttribute('aria-label',(i+1)+'번 자리 제외');toggle.setAttribute('aria-pressed','false');toggle.style.cssText='padding:6px 10px;font-size:12px;min-height:30px';
+  toggle.onclick=()=>{input.disabled=!input.disabled;input.required=!input.disabled;label.style.opacity=input.disabled?'.45':'1';toggle.textContent=input.disabled?'다시 열기':'제외';toggle.setAttribute('aria-label',(i+1)+'번 자리 '+(input.disabled?'다시 열기':'제외'));toggle.setAttribute('aria-pressed',String(input.disabled));calculate();};
+  label.append(input);inputs.push(input);slotButtons.push(toggle);slot.append(label,toggle);fields.append(slot);
  }
- form.onsubmit=event=>{event.preventDefault();calculate();};form.onreset=()=>{inputs.forEach(input=>input.value='');target.value='';calculate();};
+ form.onsubmit=event=>{event.preventDefault();calculate();};form.onreset=()=>{inputs.forEach((input,i)=>{if(input.disabled)slotButtons[i].click();input.value='';});target.value='';calculate();};
  form.append(targetRow,fields,result,recommendation,reset);panel.append(heading,note,form);calculate();
  history.replaceState(null,'','#average-level');window.scrollTo(0,0);
 }
