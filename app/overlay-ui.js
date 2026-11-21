@@ -51,7 +51,13 @@ handle.onpointerup=event=>{endDrag();if(handle.hasPointerCapture(event.pointerId
  selector.value=views.some(v=>v[0]===view)?view:'maze-hard';
  function syncSections(){
   const host=toolbar.querySelector('#companionSectionControls');host.replaceChildren();
-  const sets=materialOverlayViews.some(row=>row[0]===selector.value)?[]:selector.value==='dark-hard'?[['종류',document.querySelectorAll('.dark-guide-menu button')],['층',document.querySelectorAll('.dark-floor-menu button')]]:['baihumon','xuanwumon','zhuqiaomon'].includes(selector.value)?[['공략',document.querySelectorAll('.baihumenu button')]]:selector.value==='royal-base'||selector.value==='maze-hard'?[['층 및 재료',document.querySelectorAll('#floorTabs button')]]:[];
+  let sets=[];
+  if(!materialOverlayViews.some(row=>row[0]===selector.value)){
+   if(selector.value==='dark-hard')sets=[['종류',document.querySelectorAll('.dark-guide-menu button')],['층',document.querySelectorAll('.dark-floor-menu button')]];
+   else if(selector.value==='underground-hard')sets=[['공략',document.querySelectorAll('#reviewPanel > .baihuguide > .baihumenu button')],['지도 층',document.querySelectorAll('.underground-floor-menu button')],['보스',document.querySelectorAll('#undergroundGuideContent .baihumenu button')]];
+   else if(['baihumon','xuanwumon','zhuqiaomon','spike-mountain'].includes(selector.value))sets=[['공략',document.querySelectorAll('.baihumenu button')]];
+   else if(selector.value==='royal-base'||selector.value==='maze-hard')sets=[['층 및 재료',document.querySelectorAll('#floorTabs button')]];
+  }
   sets.forEach(([label,nodes])=>{if(!nodes.length)return;const select=document.createElement('select');select.setAttribute('aria-label',label);Array.from(nodes).forEach((btn,i)=>{const option=document.createElement('option');option.value=i;option.textContent=btn.textContent.trim();option.selected=btn.classList.contains('selected');select.append(option);});select.onchange=()=>{nodes[Number(select.value)].click();syncSections();};host.append(select);});
  }
  function showView(){
