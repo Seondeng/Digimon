@@ -1,9 +1,8 @@
 {
   "edition": "public",
-  "version": "1.9.1",
+  "version": "2.0.0",
   "locked_menus": [
-    "퀴즈",
-    "지하통로 HARD"
+    "퀴즈"
   ],
   "creator": "선댕"
 }
